@@ -1,0 +1,190 @@
+Task 1 – Animal Sound System -------------------------------
+CLASS Animal
+    ATTRIBUTES
+    name : TEXT
+    age : NUMBER
+
+    CONSTRUCTOR(n :TEXT , a : NUMBER)
+        SET name TO n 
+        SET age TO a
+    END CONSTRUCTOR
+
+    METHODS
+    PUBLIC makeSound()
+        DISPLAY name
+    END METHOD
+END CLASS
+CLASS Dog INHERITS Animal
+    METHODS
+    OVERIDE makeSound()
+        DISPLAY name + "barks"
+    END METHOD
+END CLASS
+CLASS Cat INHERITS Animal
+    METHODS
+    OVERIDE makeSound()
+        DISPLAY name + "meows"
+    END METHOD
+END CLASS
+CLASS Cow INHERITS Animal
+    METHODS
+    OVERIDE makeSound()
+        DISPLAY name + "moos"
+    END METHOD
+END CLASS
+START 
+    BEGIN
+        CREATE OBJECT pet1 OF DOG("Buddy", 3)
+        CREATE OBJECT pet2 OF Cat("Luna", 2)
+        CREATE OBJECT pet3 OF DOG("Bella", 4)
+        SET animals TO LIST[]
+        ADD pet1 TO animals
+        ADD pet2 TO animals
+        ADD pet3  TO animals
+        REPEAT FROM I=1 TO SIZE OF animals
+            I.makeSound()
+        END REPEAT
+    END
+STOP
+Task 2 – Employee Payment System  -------------------------------
+CLASS Employee
+    ATTRIBUTES
+    name : TEXT
+    baseSalary : NUMBER
+    CONSTRUCTOR(N : TEXT , salary : NUMBER)
+    SET NAME TO n 
+    SET baseSalary TO salary
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC GET calculatePay()
+        RETURN baseSalary
+    END METHOD
+END CLASS
+
+CLASS FullTimeEmployee INHERITS Employee
+    ATTRIBUTES
+    bonus : NUMBER
+    CONSTRUCTOR(b : NUMBER)
+        SET bonus TO b
+    END CONSTRUCTOR
+
+    METHODS
+    OVERIDE calculatePay()
+    RETURN baseSalary + bonus
+    END  METHOD
+END  CLASS
+CLASS PartTimeEmployee INHERITS Employee
+    ATTRIBUTES
+    hourlyRate : NUMBER
+    hoursWorked : NUMBER 
+    CONSTRUCTOR(hourRate : NUMBER , workHours : NUMBER)
+        SET hourlyRate TO hourRate
+        SET hoursWorked TO workHours
+    END CONSTRUCTOR
+
+    METHODS
+    OVERIDE calculatePay()
+    RETURN  hourlyRate * hoursWorked
+    END  METHOD
+END CLASS
+START
+    BEGIN
+        CREATE OBJECT emp1 OF FullTimeEmployee("Ali", 1000, 200) 
+        CREATE OBJECT emp2 OF PartTimeEmployee("Sara", 0, 20, 40) 
+        CREATE OBJECT emp3 OF PartTimeEmployee("Omar", 0, 15, 30) 
+        SET employees TO LIST
+        ADD emp1 TO employees
+        ADD emp2 TO employees
+        ADD emp3 TO employees
+        REPEAT FROM I=1 TO SIZE OF employees
+            DISPLAY "Employee Name" + I.name
+            DISPLAY "Total Pay: " + I.calculatePay()
+        END REPEAT
+    END
+STOP
+Task 3 – Shape Area Calculator ----------------------------------------
+CLASS Shape
+    METHODS
+    PUBLIC calculateArea()
+        DISPLAY "Area cannot be calculated "
+    END METHOD
+END CLASS
+CLASS Circle INHERITS Shape
+    ATTRIBUTES 
+    radius : NUMBER
+    CONSTRUCTOR(r : NUMBER)
+        SET radius TO r
+    END CONSTRUCTOR
+    METHODS
+    OVERIDE calculateArea()
+        DISPLAY 3.14 * radius * radius 
+    END METHOD
+END CLASS
+
+CLASS Rectangle INHERITS Shape
+    ATTRIBUTES 
+    length : NUMBER
+    width : NUMBER
+
+    CONSTRUCTOR(l : NUMBER, w : NUMBER)
+        SET length TO r
+        SET width TO w
+    END CONSTRUCTOR
+    METHODS
+    OVERIDE calculateArea()
+        DISPLAY length * width 
+    END METHOD
+END CLASS
+
+CLASS Triangle INHERITS Shape
+    ATTRIBUTES 
+    base : NUMBER
+    height : NUMBER
+
+    CONSTRUCTOR(b : NUMBER, h : NUMBER)
+        SET base TO b
+        SET height TO h
+    END CONSTRUCTOR
+    METHODS
+    OVERIDE calculateArea()
+        DISPLAY 0.5 * base * height 
+    END METHOD
+END CLASS
+
+START
+    BEGIN
+        CREATE OBJECT circle1 OF Circle(5) 
+        CREATE OBJECT rect1 OF Rectangle(4,6) 
+        CREATE OBJECT tri1 OF Triangle(10,4)
+        SET shapes TO LIST
+        ADD circle1 TO shapes
+        ADD rect1 TO shapes
+        ADD tri1 TO shapes
+        REPEAT FROM I=1 TO SIZE OF shapes
+            DISPLAY "Shape area: " + I.calculateArea()
+        END REPEAT
+    END
+STOP
+
+
+Task 4 – Vehicle Rental System --------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

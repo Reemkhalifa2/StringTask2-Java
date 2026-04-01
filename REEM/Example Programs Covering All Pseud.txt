@@ -1,0 +1,1276 @@
+Example Programs Covering All Pseudocode Terms
+
+Program 1 — Student Grade Tracker
+Covers: LIST, ADD, REMOVE, SIZE, REPEAT FROM
+START
+BEGIN
+   SET MARKS TO LIST [80, 70, 90, 65, 88]
+
+   DISPLAY "Total Students: " + SIZE OF MARKS
+
+   SET SUM TO 0
+   REPEAT FROM I = 1 TO SIZE OF MARKS
+      SET SUM TO SUM + MARKS[I]
+   END REPEAT
+
+   SET AVERAGE TO SUM / SIZE OF MARKS
+   DISPLAY "Class Average: " + AVERAGE
+END
+STOP
+
+// Output: Total Students: 5
+//         Class Average: 78.6
+
+Program 2 — Unique Visitor Tracker
+Covers: CREATE SET, ADD TO SET, SET CONTAINS, SET SIZE
+START
+BEGIN
+   CREATE SET VISITORS
+
+   ADD "Ali" TO SET VISITORS
+   ADD "Sara" TO SET VISITORS
+   ADD "Tom" TO SET VISITORS
+   ADD "Ali" TO SET VISITORS
+   ADD "Sara" TO SET VISITORS
+
+   DISPLAY "Unique Visitors: " + SET SIZE OF VISITORS
+
+   READ NEW_VISITOR
+
+   IF SET CONTAINS VISITORS NEW_VISITOR THEN
+      DISPLAY NEW_VISITOR + " has visited before"
+   ELSE
+      DISPLAY NEW_VISITOR + " is a new visitor"
+      ADD NEW_VISITOR TO SET VISITORS
+   END IF
+END
+STOP
+
+// Output: Unique Visitors: 3
+// Input:  "Ali"
+// Output: Ali has visited before
+
+Program 3 — Common Skills Finder
+Covers: CREATE SET, MERGE SETS, INTERSECT SETS, DIFFERENCE OF SETS, SET SIZE
+START
+BEGIN
+   CREATE SET CANDIDATE_A
+   ADD "Python" TO SET CANDIDATE_A
+   ADD "Java" TO SET CANDIDATE_A
+   ADD "SQL" TO SET CANDIDATE_A
+
+   CREATE SET CANDIDATE_B
+   ADD "Java" TO SET CANDIDATE_B
+   ADD "SQL" TO SET CANDIDATE_B
+   ADD "Excel" TO SET CANDIDATE_B
+
+   CREATE SET ALL_SKILLS
+   SET ALL_SKILLS TO MERGE SETS CANDIDATE_A AND CANDIDATE_B
+
+   CREATE SET SHARED_SKILLS
+   SET SHARED_SKILLS TO INTERSECT SETS CANDIDATE_A AND CANDIDATE_B
+
+   CREATE SET UNIQUE_TO_A
+   SET UNIQUE_TO_A TO DIFFERENCE OF SETS CANDIDATE_A AND CANDIDATE_B
+
+   DISPLAY "All Skills: " + ALL_SKILLS
+   DISPLAY "Shared Skills: " + SHARED_SKILLS
+   DISPLAY "Only Candidate A Has: " + UNIQUE_TO_A
+END
+STOP
+
+// Output: All Skills: Python, Java, SQL, Excel
+//         Shared Skills: Java, SQL
+//         Only Candidate A Has: Python
+
+Program 4 — Phone Book
+Covers: CREATE MAP, SET MAP KEY TO, GET FROM MAP, MAP CONTAINS KEY, REMOVE FROM MAP
+START
+BEGIN
+   CREATE MAP PHONE_BOOK
+
+   SET MAP PHONE_BOOK "Ali" TO "0501234567"
+   SET MAP PHONE_BOOK "Sara" TO "0559876543"
+   SET MAP PHONE_BOOK "Tom" TO "0581112233"
+
+   DISPLAY "Enter a name to look up"
+   READ NAME
+
+   IF MAP CONTAINS KEY PHONE_BOOK NAME THEN
+      DISPLAY "Number: " + GET FROM MAP PHONE_BOOK NAME
+   ELSE
+      DISPLAY "Contact not found"
+   END IF
+
+   DISPLAY "Enter a name to delete"
+   READ DELETE_NAME
+
+   IF MAP CONTAINS KEY PHONE_BOOK DELETE_NAME THEN
+      REMOVE FROM MAP PHONE_BOOK DELETE_NAME
+      DISPLAY DELETE_NAME + " has been removed"
+   ELSE
+      DISPLAY "Name not found"
+   END IF
+END
+STOP
+
+// Input:  "Sara"
+// Output: Number: 0559876543
+// Input:  "Tom"
+// Output: Tom has been removed
+
+Program 5 — Shop Inventory System
+Covers: CREATE MAP, GET ALL KEYS, GET ALL VALUES, MAP SIZE, CLEAR MAP
+START
+BEGIN
+   CREATE MAP INVENTORY
+
+   SET MAP INVENTORY "Apples" TO 50
+   SET MAP INVENTORY "Bananas" TO 0
+   SET MAP INVENTORY "Oranges" TO 30
+   SET MAP INVENTORY "Grapes" TO 0
+
+   DISPLAY "Total Products: " + MAP SIZE OF INVENTORY
+
+   SET KEYS TO GET ALL KEYS INVENTORY
+   SET VALUES TO GET ALL VALUES INVENTORY
+
+   DISPLAY "--- Stock Report ---"
+   REPEAT FROM I = 1 TO SIZE OF KEYS
+      SET ITEM TO KEYS[I]
+      IF GET FROM MAP INVENTORY ITEM EQUALS 0 THEN
+         DISPLAY ITEM + " — OUT OF STOCK"
+      ELSE
+         DISPLAY ITEM + " — " + GET FROM MAP INVENTORY ITEM + " units"
+      END IF
+   END REPEAT
+
+   DISPLAY "Clear inventory? (YES/NO)"
+   READ ANSWER
+
+   IF ANSWER EQUALS "YES" THEN
+      CLEAR MAP INVENTORY
+      DISPLAY "Inventory cleared"
+   END IF
+END
+STOP
+
+// Output: Total Products: 4
+//         --- Stock Report ---
+//         Apples — 50 units
+//         Bananas — OUT OF STOCK
+//         Oranges — 30 units
+//         Grapes — OUT OF STOCK
+
+Program 6 — Voting System
+Covers: CREATE SET, ADD TO SET, SET CONTAINS, CREATE MAP, SET MAP KEY TO, GET FROM MAP, MAP CONTAINS KEY
+START
+BEGIN
+   CREATE SET VOTED_IDS
+   CREATE MAP VOTE_COUNT
+
+   SET MAP VOTE_COUNT "Candidate A" TO 0
+   SET MAP VOTE_COUNT "Candidate B" TO 0
+   SET MAP VOTE_COUNT "Candidate C" TO 0
+
+   REPEAT FROM I = 1 TO 5
+      DISPLAY "Enter Voter ID"
+      READ VOTER_ID
+
+      IF SET CONTAINS VOTED_IDS VOTER_ID THEN
+         DISPLAY "Already voted"
+      ELSE
+         ADD VOTER_ID TO SET VOTED_IDS
+
+         DISPLAY "Enter your choice (A, B or C)"
+         READ CHOICE
+
+         IF CHOICE EQUALS "A" THEN
+            SET MAP VOTE_COUNT "Candidate A" TO GET FROM MAP VOTE_COUNT "Candidate A" + 1
+         ELSE IF CHOICE EQUALS "B" THEN
+            SET MAP VOTE_COUNT "Candidate B" TO GET FROM MAP VOTE_COUNT "Candidate B" + 1
+         ELSE IF CHOICE EQUALS "C" THEN
+            SET MAP VOTE_COUNT "Candidate C" TO GET FROM MAP VOTE_COUNT "Candidate C" + 1
+         ELSE
+            DISPLAY "Invalid choice"
+         END IF
+
+         DISPLAY "Vote recorded"
+      END IF
+   END REPEAT
+
+   DISPLAY "--- Final Results ---"
+   SET KEYS TO GET ALL KEYS VOTE_COUNT
+   REPEAT FROM I = 1 TO SIZE OF KEYS
+      SET CANDIDATE TO KEYS[I]
+      DISPLAY CANDIDATE + ": " + GET FROM MAP VOTE_COUNT CANDIDATE + " votes"
+   END REPEAT
+END
+STOP
+
+// Output: --- Final Results ---
+//         Candidate A: 2 votes
+//         Candidate B: 2 votes
+//         Candidate C: 1 votes
+
+Program 7 — Class Attendance
+Covers: LIST, ADD, REMOVE, SIZE, CREATE SET, SET CONTAINS, REPEAT WHILE, BOOLEAN
+START
+BEGIN
+   SET STUDENTS TO LIST ["Ali", "Sara", "Tom", "Reem", "Khalid"]
+   CREATE SET PRESENT
+
+   DISPLAY "Mark attendance (enter name or DONE to finish)"
+
+   SET DONE TO FALSE
+
+   REPEAT WHILE DONE EQUALS FALSE
+      READ NAME
+
+      IF NAME EQUALS "DONE" THEN
+         SET DONE TO TRUE
+      ELSE IF SET CONTAINS PRESENT NAME THEN
+         DISPLAY NAME + " already marked"
+      ELSE
+         ADD NAME TO SET PRESENT
+         DISPLAY NAME + " marked present"
+      END IF
+   END REPEAT
+
+   DISPLAY "Present: " + SET SIZE OF PRESENT
+   DISPLAY "Absent: " + (SIZE OF STUDENTS - SET SIZE OF PRESENT)
+END
+STOP
+
+// Input:  Ali, Sara, DONE
+// Output: Present: 2
+//         Absent: 3
+
+Program 8 — Mini Quiz App
+Covers: CREATE MAP, SET MAP KEY TO, GET FROM MAP, MAP CONTAINS KEY, MAP SIZE, LIST, REPEAT FROM
+START
+BEGIN
+   CREATE MAP QUESTIONS
+   CREATE MAP ANSWERS
+
+   SET MAP QUESTIONS "Q1" TO "What is 2 + 2?"
+   SET MAP QUESTIONS "Q2" TO "What color is the sky?"
+   SET MAP QUESTIONS "Q3" TO "How many days in a week?"
+
+   SET MAP ANSWERS "Q1" TO "4"
+   SET MAP ANSWERS "Q2" TO "blue"
+   SET MAP ANSWERS "Q3" TO "7"
+
+   SET KEYS TO GET ALL KEYS QUESTIONS
+   SET SCORE TO 0
+
+   REPEAT FROM I = 1 TO SIZE OF KEYS
+      SET QUESTION_KEY TO KEYS[I]
+      DISPLAY GET FROM MAP QUESTIONS QUESTION_KEY
+      READ USER_ANSWER
+
+      IF USER_ANSWER EQUALS GET FROM MAP ANSWERS QUESTION_KEY THEN
+         DISPLAY "Correct"
+         SET SCORE TO SCORE + 1
+      ELSE
+         DISPLAY "Wrong — Answer was: " + GET FROM MAP ANSWERS QUESTION_KEY
+      END IF
+   END REPEAT
+
+   DISPLAY "Final Score: " + SCORE + " out of " + MAP SIZE OF QUESTIONS
+END
+STOP
+
+// Output: What is 2 + 2?
+// Input:  4
+// Output: Correct
+// Output: Final Score: 3 out of 3[11:29 AM]# Pseudocode Terms — Simple Explanations & Examples
+
+---
+
+## 1. PROGRAM FLOW
+
+**START / STOP / BEGIN / END**
+> Every program must open and close properly. START and STOP wrap the whole program. BEGIN and END wrap the steps inside.
+
+```
+START
+BEGIN
+   DISPLAY "Welcome to my program"
+END
+STOP
+
+// Output: Welcome to my program
+```
+
+---
+
+## 2. DATA & VARIABLES
+
+**SET — Assign a value**
+> SET is how you store something in memory so you can use it later.
+
+```
+START
+BEGIN
+   SET NAME TO "Sara"
+   SET AGE TO 20
+   SET IS_STUDENT TO TRUE
+
+   DISPLAY NAME + " is " + AGE + " years old"
+END
+STOP
+
+// Output: Sara is 20 years old
+```
+
+---
+
+**NUMBER**
+> Stores a numeric value — used for calculations.
+
+```
+START
+BEGIN
+   SET PRICE TO 100
+   SET DISCOUNT TO 20
+   SET FINAL TO PRICE - DISCOUNT
+
+   DISPLAY "Final price: " + FINAL
+END
+STOP
+
+// Output: Final price: 80
+```
+
+---
+
+**TEXT**
+> Stores words or sentences.
+
+```
+START
+BEGIN
+   SET GREETING TO "Hello"
+   SET CITY TO "Muscat"
+
+   DISPLAY GREETING + " from " + CITY
+END
+STOP
+
+// Output: Hello from Muscat
+```
+
+---
+
+**BOOLEAN**
+> Stores only TRUE or FALSE — used for yes/no decisions.
+
+```
+START
+BEGIN
+   SET IS_RAINING TO TRUE
+
+   IF IS_RAINING EQUALS TRUE THEN
+      DISPLAY "Take an umbrella"
+   ELSE
+      DISPLAY "No umbrella needed"
+   END IF
+END
+STOP
+
+// Output: Take an umbrella
+```
+
+---
+
+## 3. INPUT & OUTPUT
+
+**DISPLAY — Show output**
+> DISPLAY prints something to the screen for the user to see.
+
+```
+START
+BEGIN
+   DISPLAY "Good morning"
+   DISPLAY "Today is a great day"
+END
+STOP
+
+// Output: Good morning
+//         Today is a great day
+```
+
+---
+
+**READ — Take input**
+> READ pauses the program and waits for the user to type something.
+
+```
+START
+BEGIN
+   DISPLAY "What is your name?"
+   READ NAME
+   DISPLAY "Nice to meet you " + NAME
+END
+STOP
+
+// Input:  Ali
+// Output: Nice to meet you Ali
+```
+
+---
+
+## 4. CONDITIONS
+
+**IF / THEN / ELSE / END IF**
+> IF checks whether something is true. If it is, it runs the THEN block. Otherwise it runs the ELSE block.
+
+```
+START
+BEGIN
+   DISPLAY "Enter your score"
+   READ SCORE
+
+   IF SCORE GREATER THAN OR EQUAL TO 50 THEN
+      DISPLAY "You passed"
+   ELSE
+      DISPLAY "You failed"
+   END IF
+END
+STOP
+
+// Input:  75
+// Output: You passed
+
+// Input:  30
+// Output: You failed
+```
+
+---
+
+## 5. COMPARISON WORDS
+
+**EQUALS / NOT EQUALS / GREATER THAN / LESS THAN / GREATER THAN OR EQUAL TO / LESS THAN OR EQUAL TO**
+> These are used inside IF conditions to compare two values.
+
+```
+START
+BEGIN
+   SET TEMPERATURE TO 38
+
+   IF TEMPERATURE GREATER THAN 37 THEN
+      DISPLAY "You have a fever"
+   ELSE IF TEMPERATURE EQUALS 37 THEN
+      DISPLAY "Normal temperature"
+   ELSE
+      DISPLAY "Below normal"
+   END IF
+END
+STOP
+
+// Output: You have a fever
+```
+
+---
+
+## 6. LOGICAL CONNECTORS
+
+**AND — Both must be true**
+> Use AND when two conditions must both be satisfied.
+
+```
+START
+BEGIN
+   SET AGE TO 20
+   SET HAS_ID TO TRUE
+
+   IF AGE GREATER THAN OR EQUAL TO 18 AND HAS_ID EQUALS TRUE THEN
+      DISPLAY "Entry allowed"
+   ELSE
+      DISPLAY "Entry denied"
+   END IF
+END
+STOP
+
+// Output: Entry allowed
+```
+
+---
+
+**OR — At least one must be true**
+> Use OR when either one condition or the other being true is enough.
+
+```
+START
+BEGIN
+   SET DAY TO "Saturday"
+
+   IF DAY EQUALS "Saturday" OR DAY EQUALS "Sunday" THEN
+      DISPLAY "It is the weekend"
+   ELSE
+      DISPLAY "It is a weekday"
+   END IF
+END
+STOP
+
+// Output: It is the weekend
+```
+
+---
+
+**NOT — Reverse the condition**
+> NOT flips TRUE to FALSE and FALSE to TRUE.
+
+```
+START
+BEGIN
+   SET IS_LOGGED_IN TO FALSE
+
+   IF NOT IS_LOGGED_IN THEN
+      DISPLAY "Please log in first"
+   ELSE
+      DISPLAY "Welcome back"
+   END IF
+END
+STOP
+
+// Output: Please log in first
+```
+
+---
+
+## 7. LOOPS
+
+**REPEAT FROM / TO / END REPEAT — Fixed repetition**
+> Use this when you know exactly how many times to repeat.
+
+```
+START
+BEGIN
+   DISPLAY "Countdown:"
+
+   REPEAT FROM I = 1 TO 5
+      DISPLAY I
+   END REPEAT
+
+   DISPLAY "Done"
+END
+STOP
+
+// Output: 1
+//         2
+//         3
+//         4
+//         5
+//         Done
+```
+
+---
+
+**REPEAT WHILE / END REPEAT — Conditional repetition**
+> Use this when you want to keep repeating until something changes.
+
+```
+START
+BEGIN
+   SET COUNT TO 3
+
+   REPEAT WHILE COUNT GREATER THAN 0
+      DISPLAY "Attempts left: " + COUNT
+      SET COUNT TO COUNT - 1
+   END REPEAT
+
+   DISPLAY "No more attempts"
+END
+STOP
+
+// Output: Attempts left: 3
+//         Attempts left: 2
+//         Attempts left: 1
+//         No more attempts
+```
+
+---
+
+## 8. LISTS
+
+**LIST — Collection of values**
+> A list holds multiple values under one name.
+
+```
+START
+BEGIN
+   SET FRUITS TO LIST ["Apple", "Banana", "Orange"]
+   DISPLAY "First fruit: " + FRUITS[1]
+   DISPLAY "Total fruits: " + SIZE OF FRUITS
+END
+STOP
+
+// Output: First fruit: Apple
+//         Total fruits: 3
+```
+
+---
+
+**ADD — Insert a value**
+> ADD puts a new item into a list.
+
+```
+START
+BEGIN
+   SET NAMES TO LIST ["Ali", "Sara"]
+   ADD "Tom" TO NAMES
+   DISPLAY SIZE OF NAMES
+END
+STOP
+
+// Output: 3
+```
+
+---
+
+**REMOVE — Delete a value**
+> REMOVE takes an item out of a list.
+
+```
+START
+BEGIN
+   SET TASKS TO LIST ["Cook", "Clean", "Study"]
+   REMOVE "Clean" FROM TASKS
+   DISPLAY SIZE OF TASKS
+END
+STOP
+
+// Output: 2
+```
+
+---
+
+**SIZE — Total elements**
+> SIZE tells you how many items are in a list.
+
+```
+START
+BEGIN
+   SET SCORES TO LIST [90, 85, 70, 60, 95]
+   DISPLAY "Number of scores: " + SIZE OF SCORES
+END
+STOP
+
+// Output: Number of scores: 5
+```
+
+---
+
+## 9. SETS
+
+**CREATE SET / ADD TO SET / REMOVE FROM SET / SET CONTAINS / SET SIZE / CLEAR SET**
+> A set is like a list but it never stores the same value twice.
+
+```
+START
+BEGIN
+   CREATE SET ATTENDEES
+
+   ADD "Ali" TO SET ATTENDEES
+   ADD "Sara" TO SET ATTENDEES
+   ADD "Ali" TO SET ATTENDEES   // duplicate — ignored
+
+   DISPLAY "Total attendees: " + SET SIZE OF ATTENDEES
+
+   IF SET CONTAINS ATTENDEES "Sara" THEN
+      DISPLAY "Sara is attending"
+   END IF
+
+   REMOVE FROM SET ATTENDEES "Sara"
+   DISPLAY "After removal: " + SET SIZE OF ATTENDEES
+
+   CLEAR SET ATTENDEES
+   DISPLAY "After clearing: " + SET SIZE OF ATTENDEES
+END
+STOP
+
+// Output: Total attendees: 2
+//         Sara is attending
+//         After removal: 1
+//         After clearing: 0
+```
+
+---
+
+**MERGE SETS — Union**
+> Combines two sets into one, keeping only unique values.
+
+```
+START
+BEGIN
+   CREATE SET GROUP_A
+   ADD "Ali" TO SET GROUP_A
+   ADD "Sara" TO SET GROUP_A
+
+   CREATE SET GROUP_B
+   ADD "Sara" TO SET GROUP_B
+   ADD "Tom" TO SET GROUP_B
+
+   CREATE SET ALL_MEMBERS
+   SET ALL_MEMBERS TO MERGE SETS GROUP_A AND GROUP_B
+
+   DISPLAY "Total unique members: " + SET SIZE OF ALL_MEMBERS
+   // Sara appears in both but is only counted once
+END
+STOP
+
+// Output: Total unique members: 3
+```
+
+---
+
+**INTERSECT SETS — Common values only**
+> Keeps only values that appear in BOTH sets.
+
+```
+START
+BEGIN
+   CREATE SET TEAM_A
+   ADD "Python" TO SET TEAM_A
+   ADD "Java" TO SET TEAM_A
+   ADD "SQL" TO SET TEAM_A
+
+   CREATE SET TEAM_B
+   ADD "Java" TO SET TEAM_B
+   ADD "SQL" TO SET TEAM_B
+   ADD "Excel" TO SET TEAM_B
+
+   CREATE SET SHARED
+   SET SHARED TO INTERSECT SETS TEAM_A AND TEAM_B
+
+   DISPLAY "Shared skills: " + SHARED
+END
+STOP
+
+// Output: Shared skills: Java, SQL
+```
+
+---
+
+**DIFFERENCE OF SETS — Unique to one set**
+> Keeps only values from the first set that do NOT appear in the second.
+
+```
+START
+BEGIN
+   CREATE SET ALL_STUDENTS
+   ADD "Ali" TO SET ALL_STUDENTS
+   ADD "Sara" TO SET ALL_STUDENTS
+   ADD "Tom" TO SET ALL_STUDENTS
+
+   CREATE SET SUBMITTED
+   ADD "Ali" TO SET SUBMITTED
+   ADD "Tom" TO SET SUBMITTED
+
+   CREATE SET NOT_SUBMITTED
+   SET NOT_SUBMITTED TO DIFFERENCE OF SETS ALL_STUDENTS AND SUBMITTED
+
+   DISPLAY "Did not submit: " + NOT_SUBMITTED
+END
+STOP
+
+// Output: Did not submit: Sara
+```
+
+---
+
+## 10. HASHMAPS
+
+**CREATE MAP / SET MAP KEY TO / GET FROM MAP / MAP CONTAINS KEY / REMOVE FROM MAP**
+> A map stores information as pairs — a key and its value. Like a dictionary.
+
+```
+START
+BEGIN
+   CREATE MAP CONTACTS
+
+   SET MAP CONTACTS "Ali" TO "0501234567"
+   SET MAP CONTACTS "Sara" TO "0559876543"
+
+   READ NAME
+
+   IF MAP CONTAINS KEY CONTACTS NAME THEN
+      DISPLAY "Number: " + GET FROM MAP CONTACTS NAME
+   ELSE
+      DISPLAY "Contact not found"
+   END IF
+
+   REMOVE FROM MAP CONTACTS "Ali"
+   DISPLAY "Ali removed"
+END
+STOP
+
+// Input:  Sara
+// Output: Number: 0559876543
+//         Ali removed
+```
+
+---
+
+**MAP SIZE / GET ALL KEYS / GET ALL VALUES / CLEAR MAP**
+> Tools to inspect and manage the whole map at once.
+
+```
+START
+BEGIN
+   CREATE MAP SCORES
+
+   SET MAP SCORES "Ali" TO 90
+   SET MAP SCORES "Sara" TO 85
+   SET MAP SCORES "Tom" TO 78
+
+   DISPLAY "Total entries: " + MAP SIZE OF SCORES
+
+   SET ALL_NAMES TO GET ALL KEYS SCORES
+   SET ALL_MARKS TO GET ALL VALUES SCORES
+
+   DISPLAY "Students: " + ALL_NAMES
+   DISPLAY "Scores: " + ALL_MARKS
+
+   CLEAR MAP SCORES
+   DISPLAY "Map cleared. Size now: " + MAP SIZE OF SCORES
+END
+STOP
+
+// Output: Total entries: 3
+//         Students: Ali, Sara, Tom
+//         Scores: 90, 85, 78
+//         Map cleared. Size now: 0
+```[11:32 AM]**** Problem solving examples ****
+
+Problem 1 — Temperature Converter
+Uses: SET, NUMBER, READ, DISPLAY, IF, ELSE
+A user enters a temperature in Celsius. Convert it to Fahrenheit and tell them if it is hot, warm, or cold.START
+BEGIN
+   DISPLAY "Enter temperature in Celsius"
+   READ CELSIUS
+
+   SET FAHRENHEIT TO (CELSIUS * 9 / 5) + 32
+
+   DISPLAY CELSIUS + "°C = " + FAHRENHEIT + "°F"
+
+   IF CELSIUS GREATER THAN OR EQUAL TO 30 THEN
+      DISPLAY "It is hot outside"
+   ELSE IF CELSIUS GREATER THAN OR EQUAL TO 15 THEN
+      DISPLAY "It is warm outside"
+   ELSE
+      DISPLAY "It is cold outside"
+   END IF
+END
+STOP
+
+// Input:  35
+// Output: 35°C = 95°F
+//         It is hot outside
+
+// Input:  10
+// Output: 10°C = 50°F
+//         It is cold outside
+
+Problem 2 — Shopping Bill Calculator
+Uses: SET, NUMBER, LIST, SIZE, REPEAT FROM, ADD
+A user adds items to a shopping list. The program calculates the total bill.START
+BEGIN
+   SET PRICES TO LIST [5, 12, 8, 20, 3]
+   SET TOTAL TO 0
+
+   DISPLAY "Your items and prices:"
+
+   REPEAT FROM I = 1 TO SIZE OF PRICES
+      DISPLAY "Item " + I + " costs: " + PRICES[I]
+      SET TOTAL TO TOTAL + PRICES[I]
+   END REPEAT
+
+   DISPLAY "Total Bill: " + TOTAL
+
+   IF TOTAL GREATER THAN 30 THEN
+      SET DISCOUNT TO TOTAL * 10 / 100
+      DISPLAY "You get a 10% discount: -" + DISCOUNT
+      DISPLAY "Final Bill: " + (TOTAL - DISCOUNT)
+   ELSE
+      DISPLAY "No discount available"
+   END IF
+END
+STOP
+
+// Output: Item 1 costs: 5
+//         Item 2 costs: 12
+//         Item 3 costs: 8
+//         Item 4 costs: 20
+//         Item 5 costs: 3
+//         Total Bill: 48
+//         You get a 10% discount: -4.8
+//         Final Bill: 43.2
+
+Problem 3 — Guess The Number Game
+Uses: SET, NUMBER, READ, DISPLAY, BOOLEAN, REPEAT WHILE, IF, AND
+The program picks a number. The user keeps guessing until they get it right. They only get 3 attempts.START
+BEGIN
+   SET SECRET TO 7
+   SET ATTEMPTS TO 3
+   SET GUESSED TO FALSE
+
+   REPEAT WHILE ATTEMPTS GREATER THAN 0 AND GUESSED EQUALS FALSE
+      DISPLAY "Guess the number (1-10). Attempts left: " + ATTEMPTS
+      READ GUESS
+
+      IF GUESS EQUALS SECRET THEN
+         DISPLAY "Correct! You got it"
+         SET GUESSED TO TRUE
+      ELSE IF GUESS LESS THAN SECRET THEN
+         DISPLAY "Too low, try again"
+      ELSE
+         DISPLAY "Too high, try again"
+      END IF
+
+      SET ATTEMPTS TO ATTEMPTS - 1
+   END REPEAT
+
+   IF GUESSED EQUALS FALSE THEN
+      DISPLAY "Out of attempts. The number was " + SECRET
+   END IF
+END
+STOP
+
+// Input:  3
+// Output: Too low, try again
+// Input:  9
+// Output: Too high, try again
+// Input:  7
+// Output: Correct! You got it
+
+Problem 4 — Duplicate Name Remover
+Uses: LIST, CREATE SET, ADD TO SET, SET SIZE, SET CONTAINS, REPEAT FROM
+A list of names has duplicates. Use a SET to clean it up and show only unique names.START
+BEGIN
+   SET NAMES TO LIST ["Ali", "Sara", "Tom", "Ali", "Sara", "Reem"]
+
+   DISPLAY "Original list size: " + SIZE OF NAMES
+
+   CREATE SET UNIQUE_NAMES
+
+   REPEAT FROM I = 1 TO SIZE OF NAMES
+      ADD NAMES[I] TO SET UNIQUE_NAMES
+   END REPEAT
+
+   DISPLAY "After removing duplicates: " + SET SIZE OF UNIQUE_NAMES
+
+   IF SET CONTAINS UNIQUE_NAMES "Ali" THEN
+      DISPLAY "Ali is in the list"
+   END IF
+END
+STOP
+
+// Output: Original list size: 6
+//         After removing duplicates: 4
+//         Ali is in the list
+
+Problem 5 — Student Pass or Fail
+Uses: CREATE MAP, SET MAP KEY TO, GET FROM MAP, MAP CONTAINS KEY, GET ALL KEYS, REPEAT FROM
+Store student scores in a map and display whether each student passed or failed.START
+BEGIN
+   CREATE MAP RESULTS
+
+   SET MAP RESULTS "Ali" TO 72
+   SET MAP RESULTS "Sara" TO 45
+   SET MAP RESULTS "Tom" TO 88
+   SET MAP RESULTS "Reem" TO 39
+
+   SET STUDENTS TO GET ALL KEYS RESULTS
+
+   DISPLAY "--- Report Card ---"
+
+   REPEAT FROM I = 1 TO SIZE OF STUDENTS
+      SET NAME TO STUDENTS[I]
+      SET SCORE TO GET FROM MAP RESULTS NAME
+
+      IF SCORE GREATER THAN OR EQUAL TO 50 THEN
+         DISPLAY NAME + " scored " + SCORE + " — PASS"
+      ELSE
+         DISPLAY NAME + " scored " + SCORE + " — FAIL"
+      END IF
+   END REPEAT
+END
+STOP
+
+// Output: --- Report Card ---
+//         Ali scored 72 — PASS
+//         Sara scored 45 — FAIL
+//         Tom scored 88 — PASS
+//         Reem scored 39 — FAIL
+
+Problem 6 — Team Skill Matcher
+Uses: CREATE SET, ADD TO SET, INTERSECT SETS, MERGE SETS, DIFFERENCE OF SETS, SET SIZE
+Two candidates apply for a job. Find out what skills they share, what skills only one has, and the full skill pool.START
+BEGIN
+   CREATE SET CANDIDATE_A
+   ADD "Python" TO SET CANDIDATE_A
+   ADD "SQL" TO SET CANDIDATE_A
+   ADD "Excel" TO SET CANDIDATE_A
+
+   CREATE SET CANDIDATE_B
+   ADD "SQL" TO SET CANDIDATE_B
+   ADD "Excel" TO SET CANDIDATE_B
+   ADD "Java" TO SET CANDIDATE_B
+
+   CREATE SET SHARED
+   SET SHARED TO INTERSECT SETS CANDIDATE_A AND CANDIDATE_B
+
+   CREATE SET ALL_SKILLS
+   SET ALL_SKILLS TO MERGE SETS CANDIDATE_A AND CANDIDATE_B
+
+   CREATE SET ONLY_A
+   SET ONLY_A TO DIFFERENCE OF SETS CANDIDATE_A AND CANDIDATE_B
+
+   CREATE SET ONLY_B
+   SET ONLY_B TO DIFFERENCE OF SETS CANDIDATE_B AND CANDIDATE_A
+
+   DISPLAY "Shared Skills: " + SHARED
+   DISPLAY "Only Candidate A: " + ONLY_A
+   DISPLAY "Only Candidate B: " + ONLY_B
+   DISPLAY "Total Unique Skills: " + SET SIZE OF ALL_SKILLS
+END
+STOP
+
+// Output: Shared Skills: SQL, Excel
+//         Only Candidate A: Python
+//         Only Candidate B: Java
+//         Total Unique Skills: 4
+
+Problem 7 — Simple ATM Machine
+Uses: SET, NUMBER, BOOLEAN, READ, DISPLAY, IF, AND, REPEAT WHILE
+A user enters their PIN and balance. They can withdraw money as long as they have enough funds.START
+BEGIN
+   SET CORRECT_PIN TO 1234
+   SET BALANCE TO 500
+   SET LOGGED_IN TO FALSE
+   SET ATTEMPTS TO 3
+
+   REPEAT WHILE ATTEMPTS GREATER THAN 0 AND LOGGED_IN EQUALS FALSE
+      DISPLAY "Enter your PIN"
+      READ PIN
+
+      IF PIN EQUALS CORRECT_PIN THEN
+         SET LOGGED_IN TO TRUE
+         DISPLAY "Login successful"
+      ELSE
+         SET ATTEMPTS TO ATTEMPTS - 1
+         DISPLAY "Wrong PIN. Attempts left: " + ATTEMPTS
+      END IF
+   END REPEAT
+
+   IF LOGGED_IN EQUALS TRUE THEN
+      DISPLAY "Your balance: " + BALANCE
+
+      DISPLAY "Enter amount to withdraw"
+      READ AMOUNT
+
+      IF AMOUNT GREATER THAN BALANCE THEN
+         DISPLAY "Insufficient funds"
+      ELSE IF AMOUNT LESS THAN OR EQUAL TO 0 THEN
+         DISPLAY "Invalid amount"
+      ELSE
+         SET BALANCE TO BALANCE - AMOUNT
+         DISPLAY "Withdrawn: " + AMOUNT
+         DISPLAY "Remaining balance: " + BALANCE
+      END IF
+   ELSE
+      DISPLAY "Card blocked. Too many wrong attempts"
+   END IF
+END
+STOP
+
+// Input:  1234
+// Output: Login successful
+//         Your balance: 500
+// Input:  200
+// Output: Withdrawn: 200
+//         Remaining balance: 300
+
+Problem 8 — Library Book Tracker
+Uses: CREATE MAP, SET MAP KEY TO, GET FROM MAP, MAP CONTAINS KEY, REMOVE FROM MAP, MAP SIZE, LIST, ADD, REMOVE
+A library tracks which books are available and who has borrowed them.START
+BEGIN
+   CREATE MAP BORROWED
+   SET AVAILABLE TO LIST ["The Alchemist", "1984", "Dune", "Brave New World"]
+
+   DISPLAY "--- Library System ---"
+   DISPLAY "Available books: " + SIZE OF AVAILABLE
+
+   DISPLAY "Enter your name"
+   READ BORROWER
+
+   DISPLAY "Enter book to borrow"
+   READ BOOK
+
+   IF MAP CONTAINS KEY BORROWED BOOK THEN
+      DISPLAY "Sorry, " + BOOK + " is already borrowed by " + GET FROM MAP BORROWED BOOK
+   ELSE
+      SET MAP BORROWED BOOK TO BORROWER
+      REMOVE BOOK FROM AVAILABLE
+      DISPLAY BORROWER + " has borrowed " + BOOK
+   END IF
+
+   DISPLAY "Books still available: " + SIZE OF AVAILABLE
+   DISPLAY "Books currently borrowed: " + MAP SIZE OF BORROWED
+
+   DISPLAY "Enter book to return"
+   READ RETURN_BOOK
+
+   IF MAP CONTAINS KEY BORROWED RETURN_BOOK THEN
+      REMOVE FROM MAP BORROWED RETURN_BOOK
+      ADD RETURN_BOOK TO AVAILABLE
+      DISPLAY RETURN_BOOK + " has been returned"
+   ELSE
+      DISPLAY "This book was not borrowed"
+   END IF
+
+   DISPLAY "Books now available: " + SIZE OF AVAILABLE
+END
+STOP
+
+// Input:  Sara, 1984
+// Output: Sara has borrowed 1984
+//         Books still available: 3
+//         Books currently borrowed: 1
+// Input:  1984
+// Output: 1984 has been returned
+//         Books now available: 4
+
+Problem 9 — Voting System
+Uses: CREATE SET, SET CONTAINS, ADD TO SET, CREATE MAP, SET MAP KEY TO, GET FROM MAP, GET ALL KEYS, REPEAT FROM
+Users vote for their favourite option. No one can vote twice. Final results are displayed at the end.START
+BEGIN
+   CREATE SET VOTED
+   CREATE MAP TALLY
+
+   SET MAP TALLY "Option A" TO 0
+   SET MAP TALLY "Option B" TO 0
+   SET MAP TALLY "Option C" TO 0
+
+   SET TOTAL_VOTES TO 5
+   SET VOTE_NUMBER TO 1
+
+   REPEAT WHILE VOTE_NUMBER LESS THAN OR EQUAL TO TOTAL_VOTES
+      DISPLAY "Enter Voter ID"
+      READ VOTER_ID
+
+      IF SET CONTAINS VOTED VOTER_ID THEN
+         DISPLAY "You have already voted"
+      ELSE
+         ADD VOTER_ID TO SET VOTED
+
+         DISPLAY "Vote for: A, B or C"
+         READ CHOICE
+
+         IF CHOICE EQUALS "A" THEN
+            SET MAP TALLY "Option A" TO GET FROM MAP TALLY "Option A" + 1
+            SET VOTE_NUMBER TO VOTE_NUMBER + 1
+         ELSE IF CHOICE EQUALS "B" THEN
+            SET MAP TALLY "Option B" TO GET FROM MAP TALLY "Option B" + 1
+            SET VOTE_NUMBER TO VOTE_NUMBER + 1
+         ELSE IF CHOICE EQUALS "C" THEN
+            SET MAP TALLY "Option C" TO GET FROM MAP TALLY "Option C" + 1
+            SET VOTE_NUMBER TO VOTE_NUMBER + 1
+         ELSE
+            DISPLAY "Invalid choice, vote not counted"
+         END IF
+      END IF
+   END REPEAT
+
+   DISPLAY "--- Final Results ---"
+   SET OPTIONS TO GET ALL KEYS TALLY
+
+   REPEAT FROM I = 1 TO SIZE OF OPTIONS
+      SET OPTION TO OPTIONS[I]
+      DISPLAY OPTION + ": " + GET FROM MAP TALLY OPTION + " votes"
+   END REPEAT
+END
+STOP
+
+// Output: --- Final Results ---
+//         Option A: 2 votes
+//         Option B: 2 votes
+//         Option C: 1 votes[11:32 AM]Problem 10 — Contact Book Manager
+Uses: CREATE MAP, SET MAP KEY TO, GET FROM MAP, MAP CONTAINS KEY, REMOVE FROM MAP, GET ALL KEYS, MAP SIZE, CLEAR MAP, READ, DISPLAY, REPEAT WHILE, IF
+A full contact book where users can add, search, delete and view all contacts.START
+BEGIN
+   CREATE MAP CONTACTS
+   SET RUNNING TO TRUE
+
+   REPEAT WHILE RUNNING EQUALS TRUE
+      DISPLAY "--- Contact Book ---"
+      DISPLAY "1. Add Contact"
+      DISPLAY "2. Search Contact"
+      DISPLAY "3. Delete Contact"
+      DISPLAY "4. View All Contacts"
+      DISPLAY "5. Clear All Contacts"
+      DISPLAY "6. Exit"
+      READ CHOICE
+
+      IF CHOICE EQUALS "1" THEN
+         DISPLAY "Enter name"
+         READ NAME
+         DISPLAY "Enter number"
+         READ NUMBER
+         SET MAP CONTACTS NAME TO NUMBER
+         DISPLAY NAME + " added"
+
+      ELSE IF CHOICE EQUALS "2" THEN
+         DISPLAY "Enter name to search"
+         READ NAME
+         IF MAP CONTAINS KEY CONTACTS NAME THEN
+            DISPLAY "Number: " + GET FROM MAP CONTACTS NAME
+         ELSE
+            DISPLAY "Contact not found"
+         END IF
+
+      ELSE IF CHOICE EQUALS "3" THEN
+         DISPLAY "Enter name to delete"
+         READ NAME
+         IF MAP CONTAINS KEY CONTACTS NAME THEN
+            REMOVE FROM MAP CONTACTS NAME
+            DISPLAY NAME + " deleted"
+         ELSE
+            DISPLAY "Contact not found"
+         END IF
+
+      ELSE IF CHOICE EQUALS "4" THEN
+         DISPLAY "Total contacts: " + MAP SIZE OF CONTACTS
+         SET NAMES TO GET ALL KEYS CONTACTS
+         REPEAT FROM I = 1 TO SIZE OF NAMES
+            SET N TO NAMES[I]
+            DISPLAY N + " — " + GET FROM MAP CONTACTS N
+         END REPEAT
+
+      ELSE IF CHOICE EQUALS "5" THEN
+         CLEAR MAP CONTACTS
+         DISPLAY "All contacts cleared"
+
+      ELSE IF CHOICE EQUALS "6" THEN
+         SET RUNNING TO FALSE
+         DISPLAY "Goodbye"
+
+      ELSE
+         DISPLAY "Invalid option"
+      END IF
+   END REPEAT
+END
+STOP
+
+// Input:  1 → Ali → 0501234567
+// Output: Ali added
+// Input:  2 → Ali
+// Output: Number: 0501234567
+// Input:  4
+// Output: Total contacts: 1
+//         Ali — 0501234567
+// Input:  6
+// Output: Goodbye

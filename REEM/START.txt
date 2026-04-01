@@ -1,0 +1,63 @@
+START 
+  BEGIN
+    DISPLAY ENTER USERNAME 
+    READ USERNAME
+
+    DISPLAY ENRER PASSWORD
+    READ PASSWORD
+
+    IF USERNAME = ADMIN THEN
+      IF PASSWORD = 1234 THEN
+       DISPLAY Login Successful
+      ELSE
+        DISPLAY Invalid Credentials
+      END IF
+    ELSE
+      DISPLAY Invalid Credentials
+   END IF 
+ STOP
+END
+  
+==========================================
+START 
+  BEGIN
+    DISPLAY Enter your age 
+    READ AGE
+
+    DISPLAY Do you have ticket
+    READ TICKET
+
+    IF AGE >=13 THEN
+      IF TICKET EQUALS YES THEN
+       DISPLAY Entry Allowed
+      ELSE
+        DISPLAY Entry Denied
+      END IF
+    ELSE
+      DISPLAY Entry Denied
+   END IF 
+ STOP
+END
+
+==========================================
+START 
+  BEGIN
+    DISPLAY Is it holiday
+    READ Holiday
+    DISPLAY Enter day
+    READ Day
+    IF Holiday EQUALS Yes THEN
+       DISPLAY NO school today
+    ELSE
+      IF Day = Saturday THEN
+        DISPLAY NO school today
+      ELSE
+        IF DAY = Sunday THEN
+          NO school today
+        ELSE
+          DISPALY school day
+        END IF
+      END IF
+   END IF
+ STOP
+END

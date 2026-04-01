@@ -1,0 +1,264 @@
+Exercise 1: Secure Exam Entry System
+
+START
+  BEGIN
+
+    DISPLAY Please Enter You age
+    READ Age
+    DISPLAY Do you have ID?
+    READ HAS_ID
+    DISPLAY Do you have ADMIT CARD ?
+    READ HAS_ADMIT_CARD
+ 
+    IF Age LESS THAN 0 
+    THEN
+      DISPLAY Invalid age
+      EXIT
+    ELSE IF Age GREATER THAN OR EQUAL TO 16 AND HAS_ID EQUALS YES AND HAS_ADMIT_CARD EQUALS YES
+    THEN
+      DISPLAY Entry Allowed
+    ELSE
+      DISPLAY Entry Denied
+    END IF
+  STOP 
+END
+__________________________________________________________________________________________________
+Exercise 2: Smart Billing Machine
+
+START
+  BEGIN
+
+    DISPLAY Please Enter Total Amount
+    READ TOTAL_AMOUNT
+    DISPLAY Are you a member?
+    READ IS_MEMBER
+    SET DISCOUNT TO 0
+    IF TOTAL_AMOUNT is GREATER THAN OR EQUAL TO 200 
+    THEN
+      SET DISCOUNT TO TOTAL_AMOUNT * 0.25
+    ELSE IF TOTAL_AMOUNT is GREATER THAN OR EQUAL TOM 100
+    THEN
+      SET DISCOUNT TO TOTAL_AMOUNT * 0.10
+    END IF
+     
+    IF IS_MEMBER EQUALS YES
+    THEN
+    SET DISCOUNT TO DISCOUNT * 0.5
+    END IF
+    DISPLAY TOTAL_AMOUNT - DISCOUNT
+  STOP                          
+END
+_____________________________________________________________
+Exercise 3: Controlled Number Analyzer
+
+START
+  BEGIN
+    DISPLAY How many numbers?
+    READ N
+    SET COUNT TO 0
+    REPEAT FROM 1 TO N
+      DISPLAY ENTER NUMBER 
+      READ NUM
+      IF NUM LESS THAN 0 
+      THEN
+        CONTINUE
+      ELSE IF NUM EQUALS 100
+      THEN
+        BREAK
+      ELSE
+        IF NUM MOD 5 EQUALS 0
+        THEN
+           SET COUNT TO COUNT + 1
+        END IF
+     END IF
+    END REPEAT
+    DISPLAY valid numbers were divisible by 5
+    DISPLAY COUNT 
+  STOP 
+END
+_____________________________________________________________
+Exercise 4: ATM Withdrawal with Validation
+START
+  BEGIN
+    SET Account_Balance TO 500
+    DISPLAY how much you want to withdraw
+    READ amount 
+    IF amount LESS THAN OR EQUAL TO 0
+    THEN
+      DISPLAY Invalid amount
+    ELSE IF amount GREATER THAN Account_Balance
+    THEN
+      DISPLAY Insufficient Funds
+    ELSE
+      SET Account_Balance TO Account_Balance - amount
+      DISPLAY Account_Balance
+    END IF
+    IF Account_Balance EQUALS 0
+    THEN
+      DISPLAY Account Empty
+    END IF
+
+  STOP
+END
+_____________________________________________________________
+Exercise 5: Prime-Like Checker
+START
+  BEGIN
+    DISPLAY Enter number bigger than 1
+    READ num
+    SET PRIME TO FASLE
+    IF num LESS THAN OR EQUAL TO 1
+    THEN
+      DISPLAY Invalid Input
+      EXIT
+    ELSE
+      REPEAT COUNT FROM 2 TO num - 1
+        IF num MOD COUNT EQUALS 0
+        THEN
+          SET PRIME TO FALSE
+        ELSE
+          SET PRIME TO TRUE
+        END IF 
+      END REPEAT
+    END IF
+  STOP
+END
+
+_____________________________________________________________
+Exercise 6: Grade Report Generator 
+
+START
+  BEGIN
+    DISPLAY Enter Number of subjects
+    READ num
+    SET TOTAL TO 0
+    SET FAIL TO 0
+    REPEAT FROM 1 TO num
+      DISPLAY Enter your score
+      READ score
+      SET TOTAL TO TOTAL + score
+      IF score LESS THAN 40
+      THEN
+        SET FAIL TO FAIL + 1
+      END IF
+    END REPEAT
+    SET avg TO TOTAL / NUM
+    DISPLAY AVERAGE + + avg
+    DISPLAY FAILED + + FAIL
+    IF FAIL GREATER THAN 0 
+    THEN
+      DISPLAY Overall Result: Fail
+    ELSE
+      DISPLAY Overall Result: Pass
+    END IF
+  STOP
+END
+_____________________________________________________________
+Exercise 7: Number Pattern Controller
+
+
+START
+  BEGIN
+    DISPLAY ENTER NUMBER
+    READ N
+    REPEAT COUNTER FROM 1 TO N
+      IF COUNTER MOD 3 EQUALS 0
+      THEN
+        DISPLAY Three
+      ELSE IF COUNTER MOD 7 EQUALS 0
+      THEN
+        DISPLAY Seven
+      ELSE IF COUNTER MOD 3 EQUALS 0 AND COUNTER MOD 7 EQUALS 0
+      THEN
+        DISPLAY ThreeSeven
+      ELSE 
+        DISPLAY COUNTER
+      END IF
+    END REPEAT
+  STOP
+END
+_____________________________________________________________
+Exercise 8: Login With System Shutdown
+
+START
+  BEGIN
+    SET COUNTER TO 0
+    REPEAT UNTIL COUNTER EQUALS 4
+      DISPLAY Enter password
+      READ PASSWORD
+      IF PASSWORD EQUALS shutdown
+      THEN
+        EXIT 
+      ELSE IF PASSWORD EQUALS secure123
+      THEN
+        DISPLAY Login Successful
+        EXIT
+      ELSE
+        DISPLAY Wrong Password
+        SET COUNTER TO COUNTER + 1
+      END IF 
+    END REPEAT
+    DISPLAY System Locked
+  STOP
+END
+
+________________________________________________________________
+Exercise 9: Number Reversal System
+START
+  BEGIN
+    DISPLAY Please Enter Number
+    READ N
+    SET A TO 0
+    SET REVERS TO 0
+    IF N LESS THAN 0
+    THEN 
+      DISPLAY Invalid Input
+      EXIT
+    ELSE
+      REPEAT UNTIL NUM EQUALS 0
+        SET A TO NUM MOD 10
+        SET REVERS TO REVERS * 10 + A  
+        SET NUM TO NUM / 10
+      END REPEAT
+    END IF
+    DISPLAY REVERS
+  STOP
+END
+
+
+
+____________________________________________________________________________________
+Exercise 10: Mini Voting Booth
+
+
+START
+  BEGIN
+    DISPLAY How many votes
+    READ VOTES
+    SET VALID TO 0
+    SET INVALID TO 0
+
+    REPEAT FROM 1 TO VOTES
+      DISPLAY ENTER AGE
+      READ AGE
+      DISPLAY ARE YOU CITIZEN
+      READ IS_CITIZEN
+      IF AGE GREATER THAN OR EQUAL TO 18 AND IS_CITIZEN EQUALS YES
+      THEN
+        SET VALID TO VALID + 1
+      ELSE
+        SET INVALID TO INVALID + 1
+      END IF
+    END REPEAT
+    DISPLAY valid votes
+    DISPALY VALID
+    DISPALY Invalid votes
+    DISPLAY INVALID 
+  STOP
+END
+
+
+
+
+
+

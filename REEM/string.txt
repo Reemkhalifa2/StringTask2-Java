@@ -1,0 +1,274 @@
+**************************************************************************
+String Manipulation Pseudocode Terms
+
+1. Basic Operations
+
+LENGTH OF STR                – Count characters in a string
+CHARACTER AT STR INDEX N     – Get character at position N
+STR FROM INDEX A TO B        – Extract part of a string
+STR1 + STR2                  – Join two strings together
+
+2. Searching
+STR CONTAINS "TEXT"          – Check if a string contains something
+STR STARTS WITH "TEXT"       – Check if string begins with given text
+STR ENDS WITH "TEXT"         – Check if string ends with given text
+FIRST INDEX OF "TEXT" IN STR   Find where something first appears
+
+3. Modifying
+UPPERCASE OF STR             – Convert to uppercase
+LOWERCASE OF STR             – Convert to lowercase
+TRIM STR                     – Remove spaces from both ends
+REPLACE TEXT WITH NEW IN STR – Swap one part for another
+REVERSE OF STR               – Flip the string backwards
+
+4. Split and Join
+SPLIT STR BY DELIMITER       – Break string into a list
+JOIN LIST WITH DELIMITER     – Combine a list into one string
+
+5. Checking Characters
+IS LETTER CHARACTER AT STR INDEX N   – Is it a letter?
+IS DIGIT CHARACTER AT STR INDEX N    – Is it a number?
+IS UPPERCASE CHARACTER AT STR INDEX N – Is it uppercase?
+IS LOWERCASE CHARACTER AT STR INDEX N – Is it lowercase?
+
+Examples
+String Manipulation — One Example Per Term
+
+1. Basic Operations:
+
+LENGTH OF
+
+START
+BEGIN
+   SET STR TO "Hello"
+   DISPLAY LENGTH OF STR
+   // Output: 5
+END
+STOP
+
+CHARACTER AT INDEX
+
+START
+BEGIN
+   SET STR TO "Hello"
+   DISPLAY CHARACTER AT STR INDEX 3
+   // Output: l
+END
+STOP
+
+FROM INDEX A TO B
+
+START
+BEGIN
+   SET STR TO "Hello World"
+   DISPLAY STR FROM INDEX 7 TO 11
+   // Output: World
+END
+STOP
+
++ (Concatenate)
+
+START
+BEGIN
+   SET FIRST TO "Good"
+   SET SECOND TO " Morning"
+   DISPLAY FIRST + SECOND
+   // Output: Good Morning
+END
+STOP
+
+2. Searching
+
+CONTAINS
+
+START
+BEGIN
+   SET STR TO "I love coding"
+
+   IF STR CONTAINS "coding" THEN
+      DISPLAY "Found"
+   ELSE
+      DISPLAY "Not Found"
+   END IF
+   // Output: Found
+END
+STOP
+
+STARTS WITH
+
+START
+BEGIN
+   SET STR TO "Hello World"
+
+   IF STR STARTS WITH "Hello" THEN
+      DISPLAY TRUE
+   ELSE
+      DISPLAY FALSE
+   END IF
+   // Output: TRUE
+END
+STOP
+
+ENDS WITH
+
+START
+BEGIN
+   SET STR TO "profile.jpg"
+
+   IF STR ENDS WITH ".jpg" THEN
+      DISPLAY "This is an image"
+   ELSE
+      DISPLAY "This is not an image"
+   END IF
+   // Output: This is an image
+END
+STOP
+
+FIRST INDEX OF
+
+START
+BEGIN
+   SET STR TO "banana"
+   DISPLAY FIRST INDEX OF "a" IN STR
+   // Output: 2
+END
+STOP
+
+3. Modifying
+
+UPPERCASE OF
+
+START
+BEGIN
+   SET STR TO "hello"
+   DISPLAY UPPERCASE OF STR
+   // Output: HELLO
+END
+STOP
+
+LOWERCASE OF
+
+START
+BEGIN
+   SET STR TO "WELCOME"
+   DISPLAY LOWERCASE OF STR
+   // Output: welcome
+END
+STOP
+
+TRIM
+
+START
+BEGIN
+   SET STR TO "   hello   "
+   DISPLAY TRIM STR
+   // Output: hello
+END
+STOP
+
+REPLACE WITH
+
+START
+BEGIN
+   SET STR TO "I like cats"
+   SET RESULT TO REPLACE "cats" WITH "dogs" IN STR
+   DISPLAY RESULT
+   // Output: I like dogs
+END
+STOP
+
+REVERSE OF
+
+START
+BEGIN
+   SET STR TO "hello"
+   DISPLAY REVERSE OF STR
+   // Output: olleh
+END
+STOP
+
+4. Split and Join
+
+SPLIT BY
+
+START
+BEGIN
+   SET STR TO "red,green,blue"
+   SET COLORS TO SPLIT STR BY ","
+   DISPLAY COLORS
+   // Output: ["red", "green", "blue"]
+END
+STOP
+
+JOIN WITH
+
+START
+BEGIN
+   SET WORDS TO ["one", "two", "three"]
+   SET RESULT TO JOIN WORDS WITH " "
+   DISPLAY RESULT
+   // Output: one two three
+END
+STOP
+
+5. Checking Characters
+
+IS LETTER
+
+START
+BEGIN
+   SET STR TO "a3"
+
+   IF IS LETTER CHARACTER AT STR INDEX 1 THEN
+      DISPLAY "It is a letter"
+   ELSE
+      DISPLAY "It is not a letter"
+   END IF
+   // Output: It is a letter
+END
+STOP
+
+IS DIGIT
+
+START
+BEGIN
+   SET STR TO "a3"
+
+   IF IS DIGIT CHARACTER AT STR INDEX 2 THEN
+      DISPLAY "It is a digit"
+   ELSE
+      DISPLAY "It is not a digit"
+   END IF
+   // Output: It is a digit
+END
+STOP
+
+IS UPPERCASE
+
+START
+BEGIN
+   SET STR TO "Hello"
+
+   IF IS UPPERCASE CHARACTER AT STR INDEX 1 THEN
+      DISPLAY "It is uppercase"
+   ELSE
+      DISPLAY "It is not uppercase"
+   END IF
+   // Output: It is uppercase
+END
+STOP
+
+IS LOWERCASE
+
+START
+BEGIN
+   SET STR TO "Hello"
+
+   IF IS LOWERCASE CHARACTER AT STR INDEX 2 THEN
+      DISPLAY "It is lowercase"
+   ELSE
+      DISPLAY "It is not lowercase"
+   END IF
+   // Output: It is lowercase
+END
+STOP

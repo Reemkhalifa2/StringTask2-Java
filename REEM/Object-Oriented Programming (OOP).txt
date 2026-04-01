@@ -1,0 +1,331 @@
+TASK 1 — Student Grade Checker ---------------------------------------------------------
+CLASS Student
+	ATTRIBUTES
+	Name : TEXT 
+	Score : NUMBER
+	METHODS
+	CHECK_GRADE()
+		IF Score GREATER THAN OR EQUAL TO 50
+			DISPLAY Name + "- PASS"
+		ELSE 
+			DISPLAY Name + "- FAIL"
+		END IF
+	END METHOD
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT Student1 OF STUDENT
+		SET Student1.Name TO Sara
+		SET Student1.Score TO 98
+		Student1.CHECK_GRADE()
+	END
+STOP
+
+
+TASK 2 ---------------------------------------------------------
+CLASS CONVERTER
+	ATTRIBUTES
+	Celsius : NUMBER
+	METHODS
+	TO_FAHRENHEIT()
+		DISPLAY (Celsius * 9 / 5) + 32
+	END METHOD
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT todayTemp OF CONVERTER
+		SET todayTemp.Celsius TO 100
+		todayTemp.TO_FAHRENHEIT()
+	END
+STOP
+
+TASK 3 — Bank Account --------------------------------------------------------- 
+CLASS BankAccount
+	ATTRIBUTES
+	Owner : TEXT
+	Balance : NUMBER
+	METHODS
+	DEPOSIT(amount)
+		SET Balance TO Balance + amount
+		DISPLAY  "Balance: " + Balance
+	END METHOD
+
+	WITHDRAW(amount)
+		IF amount GREATER THAN Balance THEN
+				DISPLAY "Insufficient funds"
+		ELSE
+			SET Balance TO Balance - amount
+		DISPLAY  "Balance: " + Balance
+		END IF
+	END METHOD
+
+END CLASS
+
+
+START
+	BEGIN
+		CREATE OBJECT newCustomer OF BankAccount
+		SET newCustomer.Owner TO "Reem"
+		SET newCustomer.Balance TO 0
+		newCustomer.DEPOSIT(300)
+		newCustomer.WITHDRAW(500)
+		newCustomer.WITHDRAW(100)
+
+	END
+STOP
+
+
+
+TASK 4 — Counting Up with a Car ---------------------------------------------------------
+
+CLASS CAR
+	ATTRIBUTES
+	brand : TEXT
+	speed : NUMBER
+
+	METHODS
+	ACCELERATE(amount)
+		SET speed TO speed + amount
+		DISPLAY "Speed is now: " + speed
+	END METHOD
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT myCar OF CAR
+		SET myCar.brand TO "TOYOTA"
+		SET myCar.speed TO 0
+
+		REPEAT FROM I=1 TO 5
+			myCar.ACCELERATE(10)
+		END REPEAT
+	END
+STOP
+
+
+TASK 5 — Product Shop ---------------------------------------------------------
+
+
+CLASS PRODUCT
+	ATTRIBUTES
+	name : TEXT
+	price : NUMBER
+	stock : NUMBER
+
+	METHODS
+	BUY()
+		IF stock GREATER THAN 0 THEN
+			SET stock to stock - 1
+			DISPLAY  "Purchased: " + name
+		ELSE
+			DISPLAY "Out of stock"
+		END IF
+	END METHOD
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT newProd OF PRODUCT
+		SET newProd.name TO "laptop"
+		SET newProd.price TO 300
+		SET newProd.stock TO 2
+		newProd.BUY()
+		newProd.BUY()
+		newProd.BUY()
+
+	END
+STOP
+TASK 6 — Classroom Average --------------------------------------------------------- 
+
+CLASS CLASSROOM
+	ATTRIBUTES
+	className : TEXT
+	marks : LIST
+	METHODS
+	ADD_MARK(mark)
+		ADD mark TO LIST marks
+	END METHOD
+	 SHOW_AVERAGE()
+		REPEAT FROM I=1 TO SIZE OF marks
+			SET SUM TO SUM + marks[I]
+			DISPLAY "Average for " + className + ":" + SUM / SIZE OF marks
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT firstClass OF CLASSROOM
+		SET firstClass.username TO "Math"
+		firstClass.ADD_MARK(80)
+		firstClass.ADD_MARK(90)
+		firstClass.ADD_MARK(70)
+		firstClass.ADD_MARK(60)
+		firstClass.SHOW_AVERAGE()
+STOP
+
+
+
+
+TASK 7 — Login System ---------------------------------------------------------
+
+CLASS USER
+	ATTRIBUTES
+	username : TEXT
+	password : TEXT
+	METHODS
+	LOGIN(enteredPassword)
+		IF enteredPassword EQUALS password THEN
+			DISPLAY "Welcome " + username 
+		ELSE
+			DISPLAY  "Wrong password" 
+		END IF
+	END METHOD
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT newUser OF USER
+		SET newUser.username TO "REEM"
+		SET newUser.password TO "RE123"
+		newUser.LOGIN("RE111")
+		newUser.LOGIN("RE123")
+	END
+STOP
+
+
+
+TASK 8 — Gym Membership --------------------------------------------------------- 
+
+CLASS MEMBER
+	ATTRIBUTES
+	name : TEXT
+	sessions : NUMBER
+	METHODS
+	ATTEND()
+		SET sessions TO sessions +1
+		DISPLAY   "Sessions attended:" + sessions
+	END METHOD
+	CHECK_REWARD()
+		IF sessions GREATER THAN OR EQUAL TO 10 THEN
+			DISPLAY "Free session earned!"
+		ELSE
+			DISPLAY "Keep going: " + sessions + " sessions" 
+	END METHOD
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT newMember OF MEMBER
+		SET newMember.name TO "REEM"
+		SET newMember.sessions TO 0
+		REPEAT FROM I=1 TO 10
+			newMember.ATTEND()
+		END REPEAT
+		newMember.CHECK_REWARD()
+	END
+STOP
+
+
+TASK 9 — Inventory Check --------------------------------------------------------- 
+
+
+CLASS WAREHOUSE
+	ATTRIBUTES
+	items : LIST
+	METHODS
+	
+	ADD_ITEM(item)
+		ADD item TO LIST items
+	END METHOD
+	CHECK_ITEMS()
+		REPEAT FROM I=1 TO SIZE OF items
+			DISPLAY items[I]
+		END REPEAT
+	END METHOD
+	FIND_ITEM(target)
+		REPEAT FROM I=1 TO SIZE OF items
+			IF items[I] EQUALS terget THEN
+				SET found TO TRUE
+			END IF
+		END REPEAT
+		IF FOUND EQUALS TRUE THEN
+			DISPLAY "Found: " + target 
+		ELSE
+			DISPLAY "Not found" 
+
+	END METHOD
+
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT newWarehouse OF WAREHOUSE
+		newWarehouse.ADD_ITEM("laptop")
+		newWarehouse.ADD_ITEM("Mouse")
+		newWarehouse.ADD_ITEM("Keyboard")
+		newWarehouse.CHECK_ITEMS()
+		newWarehouse.FIND_ITEM("Monitor")
+		newWarehouse.FIND_ITEM("Mouse")
+	END
+
+STOP
+
+
+TASK 10 — Hospital Patient Manager --------------------------------------------------------- 
+
+CLASS PATIENT
+	ATTRIBUTES
+    	name : TEXT
+    	age : NUMBER
+    	symptoms : LIST
+  	METHODS
+  		ADD_SYMPTOM(symptom)
+    		ADD symptom TO LIST symptoms
+  	END METHOD
+  	SHOW_REPORT()
+    		DISPLAY "Patient: " + name + " | age: " + age
+		DISPLAY 
+    		REPEAT FROM I=1 TO SIZE OF symptoms
+      			DISPLAY symptoms[I]
+        	END REPEAT
+  	END METHOD
+
+  	CHECK_PRIORITY()
+    		IF SIZE OF symptoms GREATER THAN OR EQUAL TO 3
+      			DISPLAY "High Priority"
+    		ELSE
+      			DISPLAY "Normal Priority"
+    		END IF
+  	END METHOD
+
+END CLASS
+
+START
+  	BEGIN
+    		CREATE OBJECT patient1 OF PATIENT
+
+    		SET patient1.name TO "Ali"
+    		SET patient1.age TO 45
+ 		CALL patient1.ADD_SYMPTOM("Fever")
+    		CALL patient1.ADD_SYMPTOM("Cough")
+    		CALL patient1.ADD_SYMPTOM("Fatigue")
+    		patient1.SHOW_REPORT()
+    		patient1.CHECK_PRIORITY()
+
+    		CREATE OBJECT patient2 OF PATIENT
+    		SET patient2.name TO "Reem"
+    		SET patient2.age TO 29
+    		SET patient2.symptoms TO EMPTY LIST
+    		patient2.ADD_SYMPTOM("Headache")
+		patient2.SHOW_REPORT()
+    		patient2.CHECK_PRIORITY()
+  	END
+STOP

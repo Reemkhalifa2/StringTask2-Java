@@ -1,0 +1,519 @@
+TASK 1 Movie Ticket Booking System -----------------------------------
+
+CLASS Movie
+    ATTRIBUTES
+    title : TEXT
+    ticketPrice : NUMBER
+    totalSeats : NUMBER
+    PRIVATE bookedSeats : NUMBER
+    CONSTRUCTOR(t :TEXT , price : NUMBER , seats : NUMBER)
+        SET title TO t
+        SET ticketPrice TO price
+        SET totalSeats TO seats
+        SET bookedSeats TO 0
+    END CONSTRUCTOR
+
+    METHODS
+    PUBLIC getAvailableSeats() 
+        RETURN totalSeats - bookedSeats
+    END METHOD
+
+    PUBLIC bookTickets(amount)
+        IF amount LESS THAN  OR EQUAL TO getAvailableSeats() THEN
+            SET bookedSeats TO bookedSeats + amount
+            DISPLAY "booking successful "
+            DISPLAY "remaining seats" +getAvailableSeats
+        ELSE 
+            DISPLAY "not enough seats available "
+        END IF
+    END METHOD
+    PUBLIC getTicketPrice()
+        RETURN ticketPrice
+    END METHOD
+
+    PUBLIC displayInfo()
+        DISPLAY "movie title " + title
+        DISPLAY "ticket price" + getTicketPrice()
+        DISPLAY "available seats" + getAvailableSeats()
+    END METHOD
+END CLASS
+
+CLASS RegularMovie INHERITS Movie
+END CLASS
+CLASS PremiumMovie INHERITS Movie
+    METHODS
+    OVERRIDE getTicketPrice()
+        RETURN ticketPrice + (ticketPrice * 0.20)
+    END METHOD
+END CLASS
+
+START 
+    BEGIN
+        CREATE OBJECT movie1 OF RegularMovie("frozen" , 2 , 5)
+        CREATE OBJECT movie2 OF PremiumMovie("frozen" , 2 , 5)
+        movie1.bookTickets(3)
+        movie1.displayInfo()
+        movie2.bookTickets(3)
+        movie2.displayInfo()
+    END
+STOP
+
+TASK 2 Employee Payroll System  ------------------------------------------------
+
+CLASS Employee
+    ATTRIBUTES
+    name : TEXT
+    baseSalary : NUMBER
+    hoursWorked : NUMBER
+    PRIVATE deductions : NUMBER
+    CONSTRUCTOR(n : TEXT , salary : NUMBER)
+        SET name TO n
+        SET baseSalary TO salary
+        SET hoursWorked TO 0
+        SET deductions TO 0
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC addHours(hours)
+        IF hours GREATER THAN 0 THEN
+            SET hoursWorked TO hoursWorked + hours
+        ELSE
+            DISPLAY " invalid hours"
+        END IF
+    END METHOD
+    PUBLIC getDeductions()
+        RETURN deductions
+    PUBLIC addDeduction(amount)
+        IF amount GREATER THAN 0 THEN
+            SET deductions TO deductions + amount
+        ELSE
+            DISPLAY "invalid deduction"
+        END IF
+    END METHOD
+    PUBLIC calculateSalary()
+        RETURN 0
+    END METHOD
+    PUBLIC displayInfo()
+        DISPLAY name
+        DISPLAY hoursWorked
+        DISPLAY calculateSalary()
+    END METHOD
+END CLASS
+
+CLASS FullTimeEmployee INHERITS Employee
+    ATTRIBUTES
+    overTime : NUMBER
+    overtimePay : NUMBER
+    METHODS
+    OVERRIDE calculateSalary()
+        IF hoursWorked GREATER THAN 40 THEN 
+            SET overTime TO hoursWorked - 40
+            SET overtimePay TO overTime * (baseSalary / 40) * 1.5 
+            RETURN baseSalary + overtimePay - getDeductions() 
+        ELSE
+            RETURN baseSalary - getDeductions() 
+        END IF
+    END METHOD
+END CLASS
+CLASS PartTimeEmployee INHERITS Employee
+    METHODS
+    OVERRIDE calculateSalary()
+        RETURN hoursWorked * ( baseSalary / 40) - getDeductions()
+    END METHOD
+END CLASS
+
+
+CLASS TASK 3 Online Shopping System   ----------------------------------------------
+
+CLASS Product
+    ATTRIBUTES
+    name : TEXT
+    price : NUMBER
+    PRIVATE stock : NUMBER
+    CONSTRUCTOR(n : TEXT , p : NUMBER , s : NUMBER)
+        SET name TO n
+        SET price TO p
+        SET stock TO s
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC checkStock() 
+        RETURN stock
+    END METHOD
+    PUBLIC buyProduct(quantity) 
+        IF quantity LESS THAN OR EQUAL TO stock THEN
+            SET stock TO stock - quantity
+            DISPLAY "purchase successful "
+            DISPLAY checkStock()
+        ELSE
+            DISPLAY " not enough stock available"
+        END IF
+    END METHOD
+    PUBLIC getFinalPrice()
+        RETURN price
+    END METHOD
+    PUBLIC displayInfo()
+        DISPLAY name
+        DISPLAY price
+        DISPLAY checkStock()
+    END METHOD
+END CLASS
+
+CLASS DigitalProduct INHERITS Product
+    METHODS
+    OVERRIDE getFinalPrice()
+        RETURN price
+    END METHOD
+END CLASS
+CLASS PhysicalProduct INHERITS Product
+    ATTRIBUTES
+    shippingCost : NUMBER
+    CONSTRUCTOR (cost : NUMBER)
+    SET shippingCost TO cost
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE getFinalPrice()
+        RETURN price + shippingCost 
+    END METHOD
+END CLASS
+------------------------------------------------------------
+TASK 4 Hospital Patient Management System  
+CLASS Patient
+    ATTRIBUTES
+    name : TEXT
+    age : NUMBER
+    PRIVATE symptoms : LIST
+    PRIVATE medications : LIST 
+    isAdmitted : BOOLEAN
+    CONSTRUCTOR (n : TEXT , a : NUMBER)
+    SET name TO n
+    SET age TO a
+    SET symptoms TO LIST[]
+    SET medications TO LIST[]
+    SET isAdmitted TO FALSE
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC addSymptom(symptom)
+        ADD symptom TO symptoms
+        DISPLAY "symptom added "
+    END METHOD
+    PUBLIC admitPatient() 
+        SET isAdmitted TO TRUE
+        DISPLAY "patient admitted"
+    END METHOD
+    PUBLIC dischargePatient() 
+        SET isAdmitted TO FALSE
+        DISPLAY " patient discharged"
+    END METHOD
+    PUBLIC prescribeMedicine(medicine)
+        IF isAdmitted EQUALS TRUE THEN
+            ADD medicine TO medications
+            DISPLAY " medicine prescribed"
+        ELSE
+            DISPLAY "patient must be admitted first"
+        END IF
+    END METHOD
+    PUBLIC getPriorityLevel() 
+        IF SIZE OF symptoms GREATER THAN OR EQUAL TO 4 THEN
+            RETURN "Critical"
+        ELSE IF SIZE OF symptoms GREATER THAN OR EQUAL TO 2 THEN
+            RETURN "Medium"
+        ELSE
+            RETURN "Low"
+        END IF 
+    END METHOD
+
+    PUBLIC displayRecord()
+        DISPLAY name 
+        DISPLAY age 
+        REPEAT FROM I=1 TO THE SIZE OF symptoms
+            DISPLAY symptoms[I]
+        END REPEAT
+        REPEAT FROM I=1 TO THE SIZE OF medications
+            DISPLAY medications[I]
+        END REPEAT
+        DISPLAY isAdmitted
+         DISPLAY  getPriorityLevel()
+    END METHOD
+END CLASS
+
+CLASS RegularPatient INHERITS Patient
+END CLASS
+CLASS EmergencyPatient INHERITS Patient
+    METHODS
+    OVERRIDE getPriorityLevel()
+        DISPLAY "Critical Priority" 
+    END METHODS
+END CLASS
+
+TASK 5 Smart Parking Management System ---------------------------------
+
+CLASS Vehicle
+    ATTRIBUTES
+    plateNumber : TEXT
+    entryTime : NUMBER
+    exitTime : NUMBER
+    hourlyRate : NUMBER
+    CONSTRUCTOR(plate : TEXT , time : NUMBER , rate : NUMBER)
+        SET plateNumber TO plate 
+        SET entryTime TO time
+        SET hourlyRate TO rate 
+        SET exitTime TO 0
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC setExitTime(time)
+        SET exitTime TO time
+    END METHOD
+    PUBLIC calculateParkingTime() 
+        RETURN exitTime - entryTime 
+    END METHOD
+    PUBLIC calculateFee()
+        RETURN 0
+    END METHOD
+    PUBLIC displayInfo()
+        DISPLAY plateNumber
+        DISPLAY entryTime
+        DISPLAY exitTime
+        DISPLAY calculateFee()
+    END METHOD
+END CLASS
+
+CLASS Car INHERITS Vehicle
+    METHODS
+    OVERRIDE calculateFee()
+        RETURN calculateParkingTime() * hourlyRate
+    END METHOD
+END CLASS
+CLASS Truck INHERITS Vehicle
+    METHODS
+    OVERRIDE calculateFee()
+        RETURN  calculateParkingTime() * hourlyRate * 1.5 
+    END METHOD
+END CLASS
+
+
+CLASS ParkingGarage 
+    ATTRIBUTES 
+    capacity : NUMBER 
+    PRIVATE vehicles : LIST
+    CONSTRUCTOR (c :NUMBER)
+    SET capacity TO c
+    SET vehicles TO LIST[]
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC enterVehicle(vehicle) 
+        IF SIZE OF vehicles LESS THAN capacity THEN
+            ADD vehicle TO vehicles
+            DISPLAY "vehicle entered"
+        ELSE
+            DISPLAY "parking full"
+        END IF
+    END METHOD
+    PUBLIC exitVehicle(plateNumber, Time)
+        REPEAT FROM I=1 TO SIZE vehicles
+            IF vehicles[I] EQUALS plateNumber THEN
+                vehicles[I].setExitTime(Time)
+                DISPLAY vehicles[I].calculateFee()
+                REMOVE vehicles[I] FROM vehicles
+                
+            END IF
+        END REPEAT
+
+    END METHOD
+
+    PUBLIC displayVehicles()
+        REPEAT FROM I=1 TO THE SIZE OF vehicles
+                vehicles[I].displayInfo()
+        END REPEAT
+    END METHOD
+END CLASS
+
+TASK 6 Online Learning Platform System ------------------
+CLASS Course
+    ATTRIBUTES 
+    title : TEXT
+    instructor : TEXT
+    basePrice : NUMBER
+    PRIVATE students : LIST
+    CONSTRUCTOR(t: TEXT , i : TEXT , price : NUMBER)
+    SET title TO t 
+    SET instructor TO i
+    SET basePrice TO price
+    SET students TO LIST[]
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC enrollStudent(studentName) 
+        ADD studentName TO students
+        DISPLAY "student enrolled successfully"
+    END METHOD
+    PUBLIC getStudentCount() 
+        RETURN SIZE OF students
+    END METHOD
+    PUBLIC getFinalPrice() 
+        RETURN 0
+    END METHOD
+    PUBLIC displayCourseInfo()
+        DISPLAY title
+        DISPLAY instructor
+        DISPLAY getFinalPrice()
+        DISPLAY getStudentCount()
+    END METHOD
+END CLASS
+
+CLASS BasicCourse INHERITS Course
+    METHODS
+    OVERRIDE getFinalPrice()
+        RETURN basePrice
+    END METHOD
+END CLASS
+
+CLASS PremiumCourse INHERITS Course
+    ATTRIBUTES 
+    certificateFee : NUMBER
+    CONSTRUCTOR(fee : NUMBER)
+    SET certificateFee TO fee
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE getFinalPrice()
+        RETURN  basePrice + certificateFee
+    END METHOD
+END CLASS
+CLASS LearningPlatform 
+    ATTRIBUTES 
+    PRIVATE  courses : LIST
+    CONSTRUCTOR
+    SET courses TO LIST[]
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC addCourse(course) 
+        ADD course TO courses
+    END METHOD
+    PUBLIC enrollStudentInCourse(courseTitle, studentName)
+        REPEAT FROM I =1 TO SIZE OF courses
+            IF courseTitle EQUALS courses[I] THEN
+                courses[I].enrollStudent(studentName)
+            END IF
+        END REPEAT
+    END METHOD
+
+    PUBLIC displayAllCourses()
+        REPEAT  FROM I=1 TO SIZE OF courses
+            DISPLAY courses[I].displayCourseInfo()
+        END REPEAT
+    END METHOD
+END CLASS
+
+
+TASK 7 Library Borrowing and Membership System
+CLASS Book
+    ATTRIBUTES
+    title : TEXT
+    author : TEXT 
+    PRIVATE isBorrowed : BOOLEAN
+    PRIVATE  borrowedBy : TEXT 
+    CONSTRUCTOR(t : TEXT , a : TEXT)
+        SET title TO t 
+        SET author TO a
+        SET isBorrowed TO FALSE
+        SET borrowedBy TO ""
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC borrowBook(memberName)
+        IF isBorrowed EQUALS FALSE THEN
+            SET isBorrowed TO TRUE
+            SET borrowedBy TO memberName
+            DISPLAY "book borrowed successfully"
+        ELSE
+            DISPLAY "book already borrowed"
+        END IF
+    END METHOD
+
+    PUBLIC returnBook()
+        SET isBorrowed TO FALSE
+        SET borrowedBy TO ""
+        DISPLAY " book returned"
+    END METHOD
+    PUBLIC displayBookInfo() 
+        DISPLAY title
+        DISPLAY author
+        DISPLAY isBorrowed
+    END METHOD
+END CLASS
+
+
+CLASS Member
+    ATTRIBUTES
+    name : TEXT  
+    PRIVATE borrowedBooks : LIST
+    borrowLimit : NUMBER
+    CONSTRUCTOR(n :TEXT)
+        SET name TO n
+        SET borrowedBooks TO LIST[]
+        SET borrowLimit TO 0
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC borrow(book)
+        IF SIZE OF borrowedBooks LESS THAN borrowLimit THEN
+            book.borrowBook(name)
+            ADD book TO borrowedBooks
+        ELSE
+            DISPLAY " borrow limit reached"
+        END IF
+    END METHOD
+    PUBLIC returnBook(book)
+        book.returnBook()
+        REMOVE book FROM borrowedBooks
+    END METHOD
+    PUBLIC displayMemberInfo() 
+        DISPLAY NAME
+        DISPLAY SIZE OF borrowedBooks
+    END METHOD
+END CLASS
+
+
+CLASS RegularMember INHERITS Member
+    CONSTRUCTOR
+        SET borrowLimit TO 3
+    END CONSTRUCTOR
+END CLASS
+
+
+CLASS PremiumMember INHERITS Member
+    CONSTRUCTOR
+        SET borrowLimit TO 7
+    END CONSTRUCTOR
+    OVERRIDE displayMemberInfo()
+        DISPLAY "Premium Member: " + name
+        DISPLAY "Premium Member Borrowed Books: " + SIZE OF borrowedBooks
+    END METHOD
+END CLASS
+
+
+CLASS Library
+    ATTRIBUTES
+    PRIVATE books : LIST
+    PRIVATE members : LIST
+
+    CONSTRUCTOR()
+        SET books TO LIST[]
+        SET members TO LIST[]
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC addBook(book)
+        ADD book TO books
+    END METHOD
+
+    PUBLIC addMember(member)
+        ADD member TO members
+    END METHOD
+
+    PUBLIC displayBooks()
+        REPEAT FROM I=1 TO SIZE OF books
+            DISPLAY books[I].displayBookInfo()
+        END REPEAT
+    END METHOD
+    PUBLIC displayMembers()
+        REPEAT FROM I=1 TO SIZE OF members
+            DISPLAY members[I].displayMemberInfo()
+        END REPEAT
+    END METHOD
+END CLASS
+

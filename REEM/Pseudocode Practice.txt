@@ -1,0 +1,850 @@
+SECTION 1: BASIC OPERATIONS 
+------------------------------------------------------------
+START
+	BEGIN
+		DISPLAY "Please enter your age"
+		READ age
+		IF age GREATER THAN OR EQUAL TO 18 THEN
+			DISPLAY "Adult"
+		ELSE 
+			DISPLAY "Minor"
+		END IF
+	END
+STOP
+
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter number 1"
+		READ N1
+		DISPLAY "enter number 2"
+		READ N2
+		DISPLAY "SUM:" + (N1 + N2)
+		DISPLAY "difference:" + (N1 - N2)
+		DISPLAY "product:" + (N1 * N2)
+		DISPLAY "quotient:" + (N1/N2)
+	END
+STOP
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter number"
+		READ N
+		IF N MODE 2 EQUALS 0 THEN
+			DISPLAY "EVEN NUMBER"
+		ELSE 
+			DISPLAY "ODD NUMBER"
+		END IF
+	END
+STOP
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		REPEAT FROM I=1 TO 10
+			DISPLAY I
+		END REPEAT
+	END
+STOP
+
+
+
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter number"
+		READ N
+		REPEAT FROM I=1 TO 10
+			DISPLAY I * N
+		END REPEAT
+	END
+STOP
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter number1"
+		READ N1
+		DISPLAY "enter number2"
+		READ N2
+		DISPLAY "enter number3"
+		READ N3
+		IF N1 GREATER THAN OR EQUAL TO N2 AND N1 GREATER THAN OR EQUAL TO N3 THEN
+			DISPLAY "LARGEST NUMBER: " + N1
+		ELSE IF N2 GREATER THAN OR EQUAL TO N1 AND N2 GREATER THAN OR EQUAL TO N3 THEN
+			DISPLAY "LARGEST NUMBER: " + N2
+		ELSE
+			DISPLAY "LARGEST NUMBER: " + N3
+		END IF
+	END
+STOP
+
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter number"
+		READ N
+		SET SUM TO 0
+		REPEAT FROM I=1 TO N
+			SET SUM TO SUM + I
+		END REPEAT
+		DISPLAY SUM
+	END
+STOP
+
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter password"
+		READ PASSWORD
+		REPEAT WHILE PASSWORD NOT EQUALS "secret123"
+			DISPLAY "WRONG PASSWORD"
+			READ PASSWORD
+		END REPEAT
+
+	END
+STOP
+
+
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter year"
+		READ year
+		IF year MOD 4 EQUALS 0 AND year MOD 100 NOT EQUALS  0 OR year MOD 400 = 0 THEN
+			DISPLAY year + "is a leap year"
+		ELSE
+			DISPLAY year + "is not a leap year"
+		END IF
+	END
+STOP
+
+------------------------------------------------------------
+START
+	BEGIN
+		SET SUM TO 0
+		REPEAT FROM I=1 TO 5 
+			DISPLAY "enter number"
+			READ N
+			SET SUM TO SUM + N
+		END REPEAT
+		DISPLAY "AVERAGE IS: " + SUM /5
+
+	END
+STOP
+
+
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter number"
+		READ N
+		IF N GREATER THAN 0 THEN
+			DISPLAY "positive"
+		ELSE IF N LESS THAN 0 THEN
+			DISPLAY "negative"
+		ELSE
+			DISPLAY "zero"
+		END IF
+	END
+STOP
+
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		SET COUNT TO 0
+		SET I TO 1
+		REPEAT UNTIL COUNT EQUALS 10
+			IF I MODE 2 EQUALS 0 THEN
+				DISPLAY I
+				SET COUNT TO COUNT + 1
+			END IF
+			SET I TO I+1
+		END REPEAT
+	END
+STOP
+------------------------------------------------------------
+
+
+START
+	BEGIN
+		DISPLAY "enter number"
+		READ N
+		SET factorial  TO 1
+		REPEAT FROM I=1 TO N
+			SET factorial TO factorial * I
+		END REPEAT
+		DISPLAY factorial
+	END
+STOP
+
+----------------------------------------------------------
+
+START
+ 	BEGIN
+ 		DISPLAY "enter temperature in Celsius "
+ 		READ C
+ 		SET Fahrenheit TO C * 9/5 + 32
+ 		DISPLAY Fahrenheit
+ 	END
+STOP
+
+-----------------------------------------------------------
+
+START
+	BEGIN
+    		DISPLAY "enter number 1"
+    		READ N1
+    		DISPLAY "Enter number 2"
+    		READ N2
+    		DISPLAY "enter operator"
+    		READ operator
+
+    		IF operator EQUALS "+" THEN
+        		DISPLAY N1 + N2
+    		ELSE IF operator EQUALS "-" THEN
+        		DISPLAY N1 - N2
+    		ELSE IF operator EQUALS "*" THEN
+        		DISPLAY N1 * N2
+    		ELSE IF operator EQUALS "/" THEN
+        		DISPLAY N1 / N2
+    		ELSE
+        		DISPLAY "enter valid operator"
+    		END IF
+	END
+STOP
+-----------------------------------------------------------
+SECTION 2: STRING OPERATIONS (Questions 16-30) 
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter your full name"
+    		READ NAME
+    		DISPLAY LENGTH OF NAME
+	END
+STOP
+
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter word"
+    		READ WORD
+    		DISPLAY "FIRST CHARACTER" + CHARACTER AT STR INDEX 0
+    		DISPLAY "LAST CHARACTER" + CHARACTER AT STR INDEX LENGTH OF WORD
+	END
+STOP
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter your first name"
+    		READ FNAME
+    		DISPLAY "enter your last name"
+    		READ LNAME
+    		DISPLAY "full name: " + FNAME + " " + LNAME
+	END
+STOP
+
+
+
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter word"
+    		READ WORD
+    		DISPLAY "UPPERCASE" + UPPERCASE OF WORD
+    		DISPLAY "LOWERCASE" + LOWERCASE OF WORD
+	END
+STOP
+
+----------------------------------------------------------- 
+START
+	BEGIN
+    		DISPLAY "enter sentence"
+    		READ sentence
+    		IF sentence CONTAINS "hello" THEN
+			DISPLAY TRUE
+		ELSE
+			DISPLAY FALSE
+		END IF
+	END
+STOP
+
+
+----------------------------------------------------------- 
+START
+	BEGIN
+    		DISPLAY "enter filename"
+    		READ filename
+    		IF filename ENDS WITH ".txt" THEN
+			DISPLAY TRUE
+		ELSE
+			DISPLAY FALSE
+		END IF
+	END
+STOP
+
+
+----------------------------------------------------------- 
+START
+	BEGIN
+    		DISPLAY "enter sentence"
+    		READ sentence
+		SET COUNT TO 1
+		REPEAT FROM I=1 TO LENGTH OF sentence
+    			IF CHARACTER AT sentence INDEX I EQUALS " " THEN
+				SET COUNT TO COUNT + 1
+			END IF
+		END REPEAT
+		DISPLAY COUNT
+	END
+STOP
+
+
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter word"
+    		READ STR
+    		DISPLAY "REVERSE" +REVERSE OF STR
+	END
+STOP
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter sentence"
+    		READ sentence
+		SET RESULT TO REPLACE "bad" WITH "good" IN sentence
+		DISPLAY RESULT
+	END
+STOP
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter your email"
+    		READ EMAIL
+		IF EMAIL CONTAINS "@" AND EMAIL CONTAINS "." THEN
+			DISPLAY TRUE
+		ELSE 
+			DISPLAY FALSE
+		END IF
+	END
+STOP
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter word"
+    		READ STR
+    		IF STR STARTS WITH "a" OR STR STARTS WITH "e" OR STR STARTS WITH "i" OR STR STARTS WITH "o" OR STR STARTS WITH "u"  THEN
+			DISPLAY TRUE
+		ELSE 
+			DISPLAY FALSE
+		END IF
+	
+	END
+STOP
+-----------------------------------------------------------
+
+START
+	BEGIN
+    		DISPLAY "enter sentence"
+    		READ sentence
+		IF LENGTH OF sentence GREATER THAN OR EQUAL TO 5 THEN
+			SET RESULT TO sentence FROM INDEX 1 TO 5
+		ELSE
+			SET RESULT TO sentence
+		END IF
+		DISPLAY RESULT
+	END
+STOP
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter word"
+    		READ STR
+    		SET COUNT TO 0
+		REPEAT FROM I=1 TO LENGTH OF STR
+			IF CHARACTER AT STR INDEX I EQUALS "a"
+				SET COUNT TO COUNT +1
+			END IF
+		END REPEAT
+		DISPLAY COUNT
+	
+	END
+STOP
+-----------------------------------------------------------
+
+START
+	BEGIN
+    		DISPLAY "enter sentence"
+    		READ sentence
+		SET RESULT TO REPLACE " " WITH "" IN sentence
+		DISPLAY RESULT
+	END
+
+STOP
+
+
+-----------------------------------------------------------
+START
+	BEGIN
+    		DISPLAY "enter word"
+    		READ STR
+    		IF STR EQUALS REVERSE OF STR THEN
+			DISPLAY "palindrome"
+		ELSE
+			DISPLAY "not palindrome"
+		END IF
+	
+	END
+STOP
+
+
+
+---------------------------------------------------------
+SECTION 3: MAPS/HASHMAPS (Questions 31-40)
+---------------------------------------------------------
+START
+	BEGIN
+    		CREATE MAP COUNTRIES 
+		SET MAP COUNTRIES "OMAN" TO "MUSCAT"
+		SET MAP COUNTRIES "QATAR" TO "Doha"
+		SET MAP COUNTRIES "Kuwait" TO "Kuwait"
+		DISPLAY "ENTER COUNTRY"
+		READ COUNTRY
+		IF MAP CONTAINS COUNTRIES COUNTRY THEN
+			DISPLAY "CAPITAL CITY" + GET FROM MAP COUNTRIES COUNTRY
+		END IF
+
+	END
+STOP
+
+----------------------------------------------------------
+START
+ 	BEGIN
+    		CREATE MAP phonebook
+ 		REPEAT FROM I=1 TO 3
+			DISPLAY "ENTER NAME"
+			READ NAME
+ 			DISPLAY "ENTER PHONE NUMBER"
+ 			READ PHONENUMBER
+			SET MAP phonebook NAME TO PHONENUMBER
+		END REPEAT
+		SET KEYS TO GET ALL KEYS phonebook 
+		REPEAT FROM I = 1 TO SIZE OF KEYS 
+			SET KEY TO KEYS[I] 
+			DISPLAY KEY 
+		END REPEAT
+ 	END
+STOP
+
+
+-------------------------------------------------------------
+
+START
+	BEGIN
+    		CREATE MAP GRADES 
+		SET MAP GRADES "REEM" TO "100"
+		SET MAP GRADES "SARA" TO "90"
+		SET MAP GRADES "NOOR" TO "80"
+		DISPLAY "ENTER NAME"
+		READ NAME
+		DISPLAY "ENTER GRADE"
+		READ GRADE
+		SET MAP GRADES NAME TO GRADE
+	END
+STOP
+
+-------------------------------------------------------------
+
+START
+	BEGIN
+    		CREATE MAP ITEMS 
+		SET MAP ITEMS "RICE" TO "20"
+		SET MAP ITEMS "MILK" TO "2"
+		SET MAP ITEMS "LAPTOP" TO "300"
+		SET KEYS TO GET ALL KEYS ITEMS 
+		SET TOTAL TO 0
+		REPEAT FROM I = 1 TO SIZE OF KEYS 
+			SET KEY TO KEYS[I] 
+			SET  TOTAL TO TOTAL + GET FROM MAP ITEMS KEY  
+		END REPEAT
+		DISPLAY TOTAL
+	END
+STOP
+
+-------------------------------------------------------------
+
+START
+	BEGIN
+    		CREATE MAP ACCOUNTS 
+		SET MAP ACCOUNTS "REEM" TO "123"
+		SET MAP ACCOUNTS "SARA" TO "456"
+		SET MAP ACCOUNTS "SAMA" TO "789"
+		DISPLAY "ENTER USERNAME"
+		READ USERNAME
+		DISPLAY "ENTER PASSWORD"
+		READ PASSWORD
+		IF MAP CONTAINS KEY ACCOUNTS USERNAME THEN
+			IF PASSWORD EQUALS GET FROM MAP ACCOUNTS USERNAME THEN
+				DISPLAY "LOGIN SUCCESFULY"
+			ELSE
+				DISPLAY "wronge credentials"
+			END IF
+		ELSE
+			DISPLAY "wronge credentials"
+		END IF     
+	END
+STOP
+
+
+-------------------------------------------------------------
+
+
+START
+	BEGIN
+		SET STR TO "HELLO HI HELLO BYE HI BYE"
+		SET WORDS TO SPLIT STR BY " "
+		CREATE MAP frequency
+		REPEAT FROM I=1 TO SIZE OF WORDS
+			IF MAP CONTAINS KEY frequency WORDS[I] THEN
+				SET GET FROM MAP frequency WORDS[I] TO GET FROM MAP frequency WORDS[I] +1
+			ELSE
+				SET MAP frequency WORDS[I] TO 1
+			END IF
+		END REPEAT
+		SET KEYS TO GET ALL KEYS ITEMS 
+		REPEAT FROM I = 1 TO SIZE OF KEYS 
+			SET KEY TO KEYS[I] 
+			DISPLAY  KEY + GET FROM MAP frequency KEY  
+		END REPEAT
+	END
+STOP
+
+
+-------------------------------------------------------------
+
+START
+    	BEGIN
+        	CREATE MAP SALARIES
+        	SET MAP SALARIES "REEM" TO 1000
+        	SET MAP SALARIES "SARA" TO 1200
+        	SET MAP SALARIES "SAMA" TO 900
+        	SET highest TO 0
+        	SET KEYS TO GET ALL KEYS SALARIES
+        	REPEAT FROM I = 1 TO SIZE OF KEYS
+            		SET KEY TO KEYS[I]
+            		IF GET FROM MAP SALARIES KEY GREATER THAN highest THEN
+                		SET highest TO GET FROM MAP SALARIES KEY
+            		END IF
+       	 	END REPEAT
+        	DISPLAY highest
+    	END
+STOP
+
+
+---------------------------------------------
+START
+    	BEGIN
+        	CREATE MAP MAP1
+        	SET MAP MAP1 "REEM" TO 1000
+        	SET MAP MAP1 "SARA" TO 1200
+        	SET MAP MAP1 "SAMA" TO 90
+        	CREATE MAP MAP2
+        	SET MAP MAP1 "REEM" TO 500
+        	SET MAP MAP1 "SARA" TO 1400
+        	SET MAP MAP1 "NOOR" TO 90
+        	SET KEYS TO GET ALL KEYS MAP2
+        	REPEAT FROM I = 1 TO SIZE OF KEYS
+            		SET KEY TO KEYS[I]
+            		IF MAP CONTAINS KEY MAP1 KEY THEN
+                		IF GET FROM MAP MAP2 KEY GREATER THAN GET FROM MAP MAP1 KEY THEN
+                    			SET MAP MAP1 KEY TO GET FROM MAP MAP2 KEY
+                		END IF
+            		ELSE
+                		SET MAP MAP1 KEY TO GET FROM MAP MAP2 KEY
+            		END IF
+        	END REPEAT
+    END
+STOP
+
+
+
+
+---------------------------------------------
+START
+    BEGIN
+        CREATE MAP inventory
+        SET MAP inventory "LAPTOP" TO 10
+        SET MAP inventory "MOUSE" TO 5
+
+        DISPLAY "ENTER ITEM NAME"
+        READ ITEM
+        DISPLAY "ENTER QUANTITY"
+        READ QUANTITY
+
+        IF MAP CONTAINS KEY inventory ITEM THEN
+            IF GET FROM MAP inventory ITEM GREATER THAN OR EQUALTO QUANTITY THEN
+                SET MAP inventory ITEM TO GET FROM MAP inventory ITEM - QUANTITY
+            ELSE
+                DISPLAY "NOT ENOUGH STOCK"
+            END IF
+        ELSE
+            DISPLAY "THERE IS NO ITEM"
+        END IF
+    END
+STOP
+
+
+----------------------------------------------
+
+START
+    BEGIN
+        DISPLAY "ENTER NUMBER 1"
+	READ N1
+        DISPLAY "ENTER NUMBER 2"
+	READ N2
+        DISPLAY "ENTER NUMBER 3"
+	READ N3
+	IF N1+N2 GREATER THAN N3 OR N1+N3 GREATER THAN N2 OE N2+N3 GREATER THAN N1
+	THEM
+		DISPLAY "can form a triangle"
+	ELSE
+		DISPLAY "can't form a triangle"
+	END IF
+    END
+STOP
+---------------------------------------
+START
+   	BEGIN
+        	DISPLAY "ENTER NUMBER"
+        	READ N
+
+        	REPEAT FROM I = 1 TO N
+            		IF N MOD I EQUALS 0 THEN
+                		DISPLAY I
+            		END IF
+        	END REPEAT
+	END
+STOP
+
+
+
+----------------------------------------------
+
+
+START
+    BEGIN
+        DISPLAY "ENTER A STRING"
+        READ STR
+        SET COUNTVOWELS TO 0
+        SET CONSONANTS TO 0
+
+        REPEAT FROM I = 1 TO LENGTH OF STR
+            IF STR[I] EQUALS  "a" OR STR[I] EQUALS "e" OR STR[I] EQUALS "i" OR STR[I] EQUALS "o" OR STR[I] EQUALS "u"  THEN
+			SET COUNTVOWELS TO COUNTVOWELS + 1
+		ELSE 
+			SET CONSONANTS TO CONSONANTS + 1
+		END IF
+	
+        END REPEAT
+
+        DISPLAY COUNTVOWELS
+        DISPLAY CONSONANTS
+    END
+STOP
+
+
+
+---------------------------------------
+START
+    BEGIN
+        SET NUMBERS LIST[]
+
+        REPEAT FROM I = 1 TO 5
+            DISPLAY "ENTER NUMBER"
+            READ N
+            ADD N TO NUMBERS
+        END REPEAT
+
+        REPEAT FROM I = SIZE OF NUMBERS TO 1
+            DISPLAY NUMBERS[I]
+        END REPEAT
+    END
+STOP
+
+
+------------------------------------------------
+
+
+START
+    BEGIN
+        DISPLAY "ENTER NUMBER"
+        READ N
+        SET PRIME TO FALSE
+        SET I TO 2
+        IF N LESS THAN OR EQUAL TO 1 THEN
+            SET PEIME TO FALSE
+        ELSE
+            REPEAT WHILE I LESS THAN OR EQUAL TO N /2
+                IF N MOD I EQUALS 0 THEN
+                    SET PRIME TO  FALSE
+                ELSE
+                    SET PROME TO TRUE
+                END IF
+                SET I TI I+1
+            END REPEAT
+        END IF
+        IF PRIME EQUALS TRUE THEN
+            DISPLAY N + "IS PRIME"
+        ELSE
+            DISPLAY N + "IS NOT PRIME"
+        END IF
+    END
+STOP
+
+------------------------------------------------
+
+START
+    BEGIN
+        DISPLAY "ENTER SENTENCE"
+        READ STR
+        SET WORDS TO SPLIT STR BY " "
+        REPEAT FROM I=1 TO SIZE OF WORDS
+                SET  CHARACTER AT WORDS[I] INDEX 0 TO UPPERCASE OF CHARACTER AT WORDS[I] INDEX 0
+            END REPEAT
+        SET RESULT TO JOIN WORDS WITH " "
+        DISPLAY RESULT
+    END
+STOP
+
+------------------------------------------------
+START
+            BEGIN
+                CREATE MONTHS MAP
+                SET MAP MONTHS "January" TO 31
+                SET MAP MONTHS "February" TO 28
+                SET MAP MONTHS "March" TO 31
+                SET MAP MONTHS "April" TO 31
+                SET MAP MONTHS "May" TO 30
+                SET MAP MONTHS "June" TO 31
+                SET MAP MONTHS "July" TO 30
+                SET MAP MONTHS "August" 31
+                SET MAP MONTHS "September" TO 30
+                SET MAP MONTHS "October" TO 31
+                SET MAP MONTHS "November" TO 30
+                SET MAP MONTHS "December" TO 31
+                DISPLAY "PLEASE ENTER THE MONTH"
+                READ MONTH
+                IF MAP CONTAINS KEY MONTHS MONTH THEN
+                    DISPLAY "THERE IS  " + GET FROM MAP MONTHS MONTH
+                END IF
+            END
+STOP
+
+------------------------------------------------
+START
+    BEGIN
+        DISPLAY "ENTER SENTENCE"
+        READ STR
+
+        SET RESULT TO ""
+
+        REPEAT FROM I = 1 TO LENGTH OF STR
+
+            REPEAT FROM J = 1 TO LENGTH OF RESULT
+                IF CHARACTER AT INDEX J OF RESULT NOT EQUALS CHARACTER AT INDEX I OF STR THEN
+                    SET RESULT TO RESULT +  CHARACTER AT INDEX I OF STR
+                END IF
+            END REPEAT
+
+
+        END REPEAT
+
+        DISPLAY RESULT
+    END
+STOP
+------------------------------------------------
+
+START
+            BEGIN
+                CREATE TEST MAP
+                SET MAP TEST "HOW MANY MONTHS IN A YEAR" TO 31
+                SET MAP TEST "WHAT IS THE CAPITAL OF OMAN" TO "Muscat"
+                SET MAP MONTHS "WHAT COLOR IS SKY " TO BLUE
+                SET SCORE TO 0
+                SET KEYS TO GET ALL KEYS TEST
+                REPEAT FROM I = 1 TO SIZE OF KEYS
+                    SET KEY TO KEYS[I]
+                    DISPLAY KEY
+                    DISPLAY "PLEASE ENTER ANSWER"
+                    READ ANSWER
+                    IF GET FROM MAP TEST TEST[I] EQUALS ANSWER THEN
+                        SET SCORE TO SCORE +1
+                    END IF
+                END REPEAT
+                DISPLAY "YOUR SCORE IS " + SCORE
+
+            END
+STOP
+
+------------------------------------------------
+
+
+START
+    BEGIN
+        DISPLAY "ENTER SENTENCE"
+        READ STR
+
+        CREATE MAP frequency
+
+        REPEAT FROM I = 1 TO LENGTH OF STR
+
+            IF MAP CONTAINS KEY frequency  CHARACTER AT INDEX I OF STR THEN
+                SET MAP frequency  CHARACTER AT INDEX I OF STR TO GET FROM MAP frequency  CHARACTER AT INDEX I OF STR + 1
+            ELSE
+                SET MAP frequency  CHARACTER AT INDEX I OF STR TO 1
+            END IF
+        END REPEAT
+
+        SET KEYS TO GET ALL KEYS frequency
+
+        REPEAT FROM I = 1 TO SIZE OF KEYS
+            SET KEY TO KEYS[I]
+            DISPLAY KEY + " : " + GET FROM MAP frequency  KEY
+        END REPEAT
+    END
+STOP

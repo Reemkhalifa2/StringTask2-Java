@@ -1,0 +1,169 @@
+
+
+--------------------------Q105 — Map Bully ----------------------------
+
+START 
+	BEGIN 
+		CREATE MAP mapBully
+		SET MAP mapBully "a" TO "candy"
+		SET MAP mapBully "b" TO "dirt"
+		IF MAP CONTAINS KEY mapBully "a" THEN
+			SET MAP mapBully "b" TO GET FROM MAP mapBully "a"
+			SET MAP mapBully "a" TO ""
+		END IF
+	END 
+STOP
+
+
+
+
+---------------------Q106 — Map Share----------------------------------
+
+
+START 
+	BEGIN 
+		CREATE MAP mapShare
+		SET MAP mapShare "a" TO "aaa"
+		SET MAP mapShare "b" TO "bbb"
+		SET MAP mapShare "c" TO "ccc"
+		IF MAP CONTAINS KEY mapShare "a" THEN
+			SET MAP mapShare "b" TO GET FROM MAP mapShare "a"
+		END IF
+		REMOVE FROM MAP mapShare "c"		
+	END 
+STOP
+
+
+------------------------ Q107 — Map AB --------------------------------
+
+
+
+START 
+	BEGIN 
+		CREATE MAP mapAB
+		SET MAP mapAB "a" TO "Hi"
+		SET MAP mapAB "b" TO "There"
+		IF MAP CONTAINS KEY mapAB "a" AND MAP CONTAINS KEY mapAB "b" THEN
+			SET MAP mapAB "ab" TO GET FROM MAP mapAB "a" + GET FROM MAP mapAB "b"
+		END IF
+	END 
+STOP
+
+
+--------------------------- Q108 — Topping 1  -------------------------------
+
+START 
+	BEGIN 
+		CREATE MAP topping1
+		SET MAP topping1 "ice cream" TO "peanuts"
+		IF MAP CONTAINS topping1 "ice cream" THEN
+			SET MAP topping1 "ice cream" TO "cherry"
+		END IF
+		SET MAP topping1 "bread" TO "butter"
+	END 
+STOP
+
+--------------------------Q109 — Topping 2 ---------------------------------
+
+START 
+	BEGIN 
+		CREATE MAP topping2
+		SET MAP topping2 "ice cream" TO "peanuts"
+		IF MAP CONTAINS topping2 "ice cream" THEN
+			SET MAP topping2 "yogurt" TO GET FROM MAP topping2 "ice cream"
+		END IF
+		IF MAP CONTAINS topping2 "spinach" THEN
+			SET MAP topping2 "spinach" TO "nuts"
+		END IF
+	END 
+STOP
+
+
+
+------------------------Q110 — Topping 3 --------------------------------
+
+START 
+	BEGIN 
+		CREATE MAP topping3
+		SET MAP topping3 "ice cream" TO "peanuts"
+		IF MAP CONTAINS KEY topping3 "potato" THEN
+			SET MAP topping3 "fries" TO GET FROM MAP topping3 "potato"
+		END IF
+		IF MAP CONTAINS KEY topping3 "salad" THEN
+			SET MAP topping3 "spinach" TO GET FROM MAP topping3 "salad"
+		END IF
+	END 
+STOP
+
+
+
+-------------------Q111 — Map AB 2 ----------------------------
+
+
+START 
+	BEGIN 
+		CREATE MAP mapAB2
+		SET MAP mapAB2 "a" TO "aaa"
+		SET MAP mapAB2 "b" TO "aaa"
+		SET A_VALUE TO GET FROM MAP mapAB2 "a"
+		SET B_VALUE TO GET FROM MAP mapAB2 "b"
+		IF MAP CONTAINS KEY mapAB2 "a" AND MAP CONTAINS KEY mapAB2 "b" THEN
+			IF A_VALUE EQUALS B_VALUE THEN 
+				REMOVE FROM MAP mapAB2 "a"
+				REMOVE FROM MAP mapAB2 "b"
+			END IF
+		END IF
+		
+	END 
+STOP
+
+
+----------------------------------Q112 — Map AB 3--------------------------------------------
+
+
+START
+	BEGIN
+		CREATE MAP mapAB3
+		SET MAP mapAB3 "a" TO "aaa"
+		SET MAP mapAB3 "c" TO "cake"
+
+		IF MAP CONTAINS KEY mapAB3 "a" AND NOT MAP CONTAINS KEY mapAB3 "b" THEN
+			SET MAP mapAB3 "b" TO GET FROM MAP mapAB3 "a"
+		ELSE IF MAP CONTAINS KEY mapAB3 "b" AND NOT MAP CONTAINS KEY mapAB3 "a" THEN
+			SET MAP mapAB3 "a" TO GET FROM MAP mapAB3 "b"
+		END IF
+	END
+STOP
+
+
+------------------Q113 — Map AB 4 ----------------------------------------------
+
+
+
+START
+	BEGIN
+		CREATE MAP mapAB4
+		SET MAP mapAB4 "a" TO "aaa"
+		SET MAP mapAB4 "b" TO "bbb"
+
+		IF MAP CONTAINS KEY mapAB4 "a" AND MAP CONTAINS KEY mapAB4 "b" THEN
+			SET A_VALUE TO GET FROM MAP mapAB4 "a"
+			SET B_VALUE TO GET FROM MAP mapAB4 "b"
+
+			IF LENGTH OF A_VALUE EQUALS LENGTH OF B_VALUE THEN
+				SET MAP mapAB4 "a" TO ""
+				SET MAP mapAB4 "b" TO ""
+			ELSE IF LENGTH OF A_VALUE GREATER THAN LENGTH OF B_VALUE THEN
+				SET MAP mapAB4 "c" TO A_VALUE
+			ELSE
+				SET MAP mapAB4 "c" TO B_VALUE
+			END IF
+		END IF
+	END
+STOP
+
+
+
+
+
+

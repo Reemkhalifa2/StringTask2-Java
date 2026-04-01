@@ -1,0 +1,134 @@
+Q126 — Hello Name ------------------------------------
+
+START
+	BEGIN
+		DISPLAY "Enter you name"
+		READ NAME
+		DISPLAY "Hello " + NAME + "!"
+	END
+STOP
+
+Q127 — Make Abba ------------------------------------
+
+START
+	BEGIN
+		DISPLAY "Enter first word"
+		READ A
+		DISPLAY "Enter Second word"
+		READ B
+		DISPLAY A+B+B+A	
+	END
+STOP
+
+Q128 — Make Tags ------------------------------
+
+START
+	BEGIN
+		DISPLAY "Enter html tag"
+		READ TAG
+		DISPLAY "Enter text word"
+		READ TEXT
+		DISPLAY  "<" + TAG + ">" + TEXT + "</" + TAG + ">"
+	END
+STOP
+
+Q129 — Make Out Word ------------------------
+
+START
+	BEGIN
+		SET OUT TO "<<>>"
+		SET TEXT TO "Yay"
+		SET FIRST TO CHARACTERS FROM OUT INDEX  1 TO 2 
+		SET LAST TO CHARACTERS FROM OUT INDEX 3 TO 4  
+		DISPLAY  FIRST + TEXT + LAST
+	END
+STOP
+
+Q130 — Extra End -----------------------------
+
+START
+	BEGIN
+		SET TEXT TO "Hello"
+		SET TEXTSIZE TO LENGTH OF TEXT
+		IF TEXTSIZE GREATER THAN OR EQUAL TO 2
+		THEN
+			SET STR TO CHARACTERS FROM TEXT INDEX  TEXTSIZE-1 TO TEXTSIZE
+		ELSE
+			SET STR TO TEXT
+		END IF
+		DISPLAY  STR + STR + STR
+	END
+STOP
+
+Q132 — First Half -------------------------------
+
+START
+	BEGIN
+		SET TEXT TO "Hello"
+		SET TEXTSIZE TO LENGTH OF TEXT
+                SET MIDPOINT TO TEXTSIZE/2
+		IF TEXTSIZE MOD 2 EQUALS 0
+		THEN
+			SET STR TO CHARACTER FROM TEXT INDEX 1 TO MIDPOINT 
+		END IF
+		DISPLAY  STR
+	END
+STOP
+
+Q133 — Without End --------------------------------
+
+START
+	BEGIN
+		SET STR TO "Hello"
+		IF LENGTH OF STR GREATER THAN OR EQUAL TO 2
+		THEN
+			DISPLAY CHARACTER AT STR INDEX 2 TO LENGTH OF STR-1	
+		END IF
+	END
+STOP
+
+
+Q134 — Combo String ---------------------------
+
+
+START
+	BEGIN
+		SET A TO "Hello"
+		SET B TO "Hi"
+		IF LENGTH OF A GREATER THAN OR EQUAL TO LENGTH OF B
+		THEN
+			DISPLAY B + A + B
+		ELSE
+			DISPLAY A + B+ A	
+		END IF
+	END
+STOP
+
+
+Q135 — Non Start -----------------------------------
+
+START
+	BEGIN
+		SET A TO "Hello"
+		SET B TO "There"
+		IF LENGTH OF A GREATER THAN OR EQUAL TO 1 AND LENGTH OF B GREATER THAN OR EQUAL TO 1
+		THEN
+			DISPLAY CHARACTER AT A INDEX 2 TO LENGTH OF A + CHARACTER AT B INDEX 2 TO LENGTH OF B
+			
+		END IF
+	END
+STOP
+
+
+Q136 — Left 2 --------------------------
+
+START
+	BEGIN
+		SET STR TO "Hello"
+		IF LENGTH OF STR GREATER THAN OR EQUAL TO 2
+		THEN
+			DISPLAY CHARACTER AT A INDEX 2 TO LENGTH OF A + CHARACTER AT B INDEX 2 TO LENGTH OF B
+		END IF
+	END
+STOP
+

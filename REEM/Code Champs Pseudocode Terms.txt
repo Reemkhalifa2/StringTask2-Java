@@ -1,0 +1,301 @@
+CHA*********************************************************
+1️ PROGRAM FLOW
+
+START – Begin the program
+STOP – End the program
+BEGIN – Start a block of steps
+END – Close a block of steps
+
+Example
+
+START
+BEGIN
+   DISPLAY  Welcome 
+END
+STOP
+
+*********************************************************
+2 DATA & VARIABLES
+
+SET – Assign a value
+NUMBER – Numeric value
+TEXT – Words or sentences
+BOOLEAN – TRUE or FALSE
+
+Example
+
+SET AGE TO 20
+SET NAME TO  Sara 
+SET IS_ACTIVE TO TRUE
+
+
+*********************************************************
+3 INPUT & OUTPUT
+
+DISPLAY – Show output
+READ – Take input
+
+Example Program: Read and Display Name
+
+START
+BEGIN
+   DISPLAY  Enter your name 
+   READ NAME
+   DISPLAY  Hello   + NAME
+END
+STOP
+
+*********************************************************
+4 CONDITIONS (DECISION MAKING)
+
+IF – Check a condition
+THEN – Execute when condition is true
+ELSE – Execute when condition is false
+END IF – Close condition
+
+Example Program: Age Check
+
+IF AGE >= 18 THEN
+   DISPLAY  Allowed 
+ELSE
+   DISPLAY  Not Allowed 
+END IF
+
+*********************************************************
+5 COMPARISON WORDS
+
+EQUALS
+NOT EQUALS
+GREATER THAN
+LESS THAN
+GREATER THAN OR EQUAL TO
+LESS THAN OR EQUAL TO
+
+Example
+
+IF SCORE GREATER THAN OR EQUAL TO 50 THEN
+   DISPLAY  Pass 
+ELSE
+   DISPLAY  Fail 
+END IF
+
+*********************************************************
+6 LOGICAL CONNECTORS
+
+AND – Both conditions must be true
+OR – Any one condition is true
+NOT – Reverse the condition
+
+Example
+
+IF AGE >= 18 AND HAS_ID = TRUE THEN
+   DISPLAY  Entry Allowed 
+END IF
+
+*********************************************************
+7 LOOPS (REPETITION)
+-Fixed repetition
+
+REPEAT FROM
+TO
+END REPEAT
+
+Example Program: Print Numbers
+
+REPEAT FROM I = 1 TO 5
+   DISPLAY I
+END REPEAT
+
+
+-Conditional repetition
+
+REPEAT WHILE
+END REPEAT
+
+Example Program: Countdown
+
+REPEAT WHILE COUNT > 0
+   DISPLAY COUNT
+   SET COUNT TO COUNT - 1
+END REPEAT
+
+*********************************************************
+
+9 LISTS / COLLECTIONS
+
+LIST – Collection of values
+ADD – Insert value
+REMOVE – Delete value
+SIZE – Total elements
+
+Example Program: Student Marks
+
+SET MARKS TO LIST [80, 70, 90]
+DISPLAY SIZE OF MARKS
+
+*********************************************************
+CREATE SET – Make a new set
+ADD TO SET – Insert a value
+REMOVE FROM SET – Delete a value
+SET CONTAINS – Check if value exists
+SET SIZE – Number of items in the set
+CLEAR SET – Remove all items
+MERGE SETS – Combine two sets (Union)
+INTERSECT SETS – Keep only common values
+DIFFERENCE OF SETS – Keep values not in the other set
+
+
+Example Program: Remove Duplicate Entries
+START
+BEGIN
+   CREATE SET UNIQUE_NAMES
+   ADD "Sara" TO SET UNIQUE_NAMES
+   ADD "Ali" TO SET UNIQUE_NAMES
+   ADD "Sara" TO SET UNIQUE_NAMES
+
+   DISPLAY SET SIZE OF UNIQUE_NAMES
+   // Output: 2  (Sara was not added twice)
+END
+STOP
+
+
+Example Program: Check Membership
+START
+BEGIN
+   CREATE SET BANNED_USERS
+   ADD "ghost99" TO SET BANNED_USERS
+   ADD "spammer1" TO SET BANNED_USERS
+
+   READ USERNAME
+
+   IF SET CONTAINS BANNED_USERS USERNAME THEN
+      DISPLAY "Access Denied"
+   ELSE
+      DISPLAY "Welcome " + USERNAME
+   END IF
+END
+STOP
+
+
+Example Program: Common Interests (Intersection)
+START
+BEGIN
+   CREATE SET ALICE_HOBBIES
+   ADD "Reading" TO SET ALICE_HOBBIES
+   ADD "Gaming" TO SET ALICE_HOBBIES
+   ADD "Cooking" TO SET ALICE_HOBBIES
+
+   CREATE SET BOB_HOBBIES
+   ADD "Gaming" TO SET BOB_HOBBIES
+   ADD "Cooking" TO SET BOB_HOBBIES
+   ADD "Cycling" TO SET BOB_HOBBIES
+
+   CREATE SET COMMON
+   SET COMMON TO INTERSECT SETS ALICE_HOBBIES AND BOB_HOBBIES
+
+   DISPLAY "Shared Hobbies: " + COMMON
+   // Output: Gaming, Cooking
+END
+STOP
+
+
+*********************************************************
+
+HASHMAP (Key → Value Pairs)
+A HASHMAP stores data as KEY : VALUE pairs. Each key is unique.
+CREATE MAP – Make a new hashmap
+SET MAP KEY TO – Store a value at a key
+GET FROM MAP – Retrieve value by key
+REMOVE FROM MAP – Delete a key-value pair
+MAP CONTAINS KEY – Check if a key exists
+MAP SIZE – Number of key-value pairs
+CLEAR MAP – Remove all entries
+GET ALL KEYS – List all keys
+GET ALL VALUES – List all values
+Example Program: Store and Retrieve Student Grades
+START
+BEGIN
+   CREATE MAP GRADES
+
+   SET MAP GRADES "Sara" TO 95
+   SET MAP GRADES "Ali" TO 82
+   SET MAP GRADES "Reem" TO 78
+
+   READ STUDENT_NAME
+
+   IF MAP CONTAINS KEY GRADES STUDENT_NAME THEN
+      DISPLAY "Grade: " + GET FROM MAP GRADES STUDENT_NAME
+   ELSE
+      DISPLAY "Student not found"
+   END IF
+END
+STOP
+Example Program: Word Frequency Counter
+START
+BEGIN
+   CREATE MAP WORD_COUNT
+
+   SET SENTENCE TO "apple banana apple orange banana apple"
+   // Assume SPLIT breaks sentence into individual words
+   SET WORDS TO SPLIT SENTENCE BY " "
+
+   REPEAT FROM I = 1 TO SIZE OF WORDS
+      SET WORD TO WORDS[I]
+
+      IF MAP CONTAINS KEY WORD_COUNT WORD THEN
+         SET MAP WORD_COUNT WORD TO GET FROM MAP WORD_COUNT WORD + 1
+      ELSE
+         SET MAP WORD_COUNT WORD TO 1
+      END IF
+   END REPEAT
+
+   DISPLAY WORD_COUNT
+   // Output: apple:3, banana:2, orange:1
+END
+STOP
+Example Program: Simple Login System
+START
+BEGIN
+   CREATE MAP USER_PASSWORDS
+   SET MAP USER_PASSWORDS "admin" TO "1234"
+   SET MAP USER_PASSWORDS "sara" TO "pass99"
+
+   DISPLAY "Enter Username"
+   READ USERNAME
+   DISPLAY "Enter Password"
+   READ PASSWORD
+
+   IF MAP CONTAINS KEY USER_PASSWORDS USERNAME THEN
+      IF GET FROM MAP USER_PASSWORDS USERNAME EQUALS PASSWORD THEN
+         DISPLAY "Login Successful"
+      ELSE
+         DISPLAY "Wrong Password"
+      END IF
+   ELSE
+      DISPLAY "User Not Found"
+   END IF
+END
+STOP
+Example Program: Product Inventory
+START
+BEGIN
+   CREATE MAP INVENTORY
+
+   SET MAP INVENTORY "Apples" TO 50
+   SET MAP INVENTORY "Bananas" TO 30
+   SET MAP INVENTORY "Oranges" TO 0
+
+   // Check which items are out of stock
+   SET KEYS TO GET ALL KEYS INVENTORY
+
+   REPEAT FROM I = 1 TO SIZE OF KEYS
+      SET ITEM TO KEYS[I]
+      IF GET FROM MAP INVENTORY ITEM EQUALS 0 THEN
+         DISPLAY ITEM + " is OUT OF STOCK"
+      ELSE
+         DISPLAY ITEM + " has " + GET FROM MAP INVENTORY ITEM + " units"
+      END IF
+   END REPEAT
+END
+STOP
+

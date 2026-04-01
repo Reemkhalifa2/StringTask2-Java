@@ -1,0 +1,603 @@
+Q75 — Cigar Party  -------------------------------
+
+
+START
+	BEGIN
+		SET CIGARS TO 30
+		SET WEEKEND TO FALSE
+		IF WEEKEND EQUALS TRUE THEN
+			IF CIGARS GREATER THAN OR EQUAL TO 40 THEN
+				DISPLAY TRUE
+			ELSE
+				DISPLAY FALSE
+			END IF
+		ELSE
+			IF CIGARS GREATER THAN OR EQUAL TO 40 AND CIGARS LESS THAN OR EQUAL TO 60 THEN
+				DISPLAY TRUE
+			ELSE
+				DISPLAY FALSE
+			END IF
+
+		END IF
+	END
+STOP
+
+
+Q76 — Date Fashion  ------------------------------
+
+START 
+	BEGIN 
+		SET YOU TO 5 
+		SET DATE TO 10 
+		IF YOU LESS THAN OR EQUAL TO 2 OR DATE LESS THAN OR EQUAL TO 2 THEN 
+			DISPLAY "0"
+		ELSE IF YOU GREATER THAN OR EQUAL TO 8 OR DATE GREATER THAN OR EQUAL TO 8 THEN 
+			DISPLAY 2 
+		ELSE 
+			DISPLAY 1
+		END IF 
+	END 
+STOP
+
+Q77 — Squirrel Play --------------------------------------------------------------------------------------
+
+START 
+	BEGIN 
+		SET TEMPERATURE TO 70 
+   		SET ISSUMMER TO FALSE 
+   		IF ISSUMMER EQUALS TRUE 
+		THEN 
+      			IF TEMPERATURE GREATER THAN OR EQUAL TO 60 AND TEMPERATURE LESS THAN OR EQUAL TO 100 
+			THEN 
+         			DISPLAY TRUE 
+      			ELSE 
+         			DISPLAY FALSE 
+      			END IF 
+   		ELSE 
+      			IF TEMPERATURE GREATER THAN OR EQUAL TO 60 AND TEMPERATURE LESS THAN OR EQUAL TO 90 
+			THEN 
+         			DISPLAY TRUE 
+      			ELSE 
+         			DISPLAY FALSE 
+      			END IF 
+   		END IF 
+	END 
+STOP 
+
+Q78 — Caught Speeding  ---------------------------------------------------------
+
+START
+BEGIN
+    SET SPEED TO 60
+    SET BIRTHDAY TO FALSE
+
+    IF BIRTHDAY EQUALS TRUE THEN
+        SET LIMIT_0 TO 65
+        SET LIMIT_1 TO 85
+    ELSE
+        SET LIMIT_0 TO 60
+        SET LIMIT_1 TO 80
+    END IF
+
+    IF SPEED LESS THAN OR EQUAL TO LIMIT_0 THEN
+        DISPLAY 0
+    ELSE IF SPEED LESS THAN OR EQUAL TO LIMIT_1 THEN
+        DISPLAY 1
+    ELSE
+        DISPLAY 2
+    END IF
+END
+STOP
+
+
+
+Q79 — Sorta Sum   ------------------------        
+
+START 
+	BEGIN 
+		SET A TO 3 
+		SET B TO 4 
+		SET TOTAL TO A + B 
+		IF TOTAL GREATER THAN OR EQUAL TO 10 AND TOTAL LESS THAN OR EQUAL TO 19 THEN 
+			DISPLAY 20
+		ELSE 
+			DISPLAY TOTAL 
+		END IF 
+	END 
+STOP 
+
+
+Q80 — Alarm Clock  ----------------------
+WEEKEND ARE(FRIDAY 5, SAT=6)
+
+START
+	BEGIN
+		SET DAY TO 5
+		SET vacation TO FALSE
+		IF vacation EQUALS TRUE THEN
+			IF DAY EQUALS 5 OR DAY EQUALS 6 THEN
+				DISPLAY "off" 
+			ELSE
+				DISPLAY "10:00"
+			END IF
+		ELSE
+			IF DAY EQUALS 5 OR DAY EQUALS 6 THEN
+				DISPLAY "10:00"
+			ELSE
+				DISPLAY "07:00"
+			END IF
+		END IF
+	END
+STOP
+
+
+
+
+Q81 — Love 6 --------------------------------------------
+
+START 
+	BEGIN 
+		SET A TO 6 
+		SET B TO 4 
+		SET ABSDIFF TO ABSOLUTE(A-B)
+		SET SUM TO A + B 
+		IF A EQUALS 6 OR B EQUALS 6 OR ABSDIFF EQUALS 6 OR SUM EQUALS 6 THEN 
+			DISPLAY TRUE 
+		ELSE 
+			DISPLAY FALSE 
+		END IF 
+	END 
+STOP 
+
+
+Q82 — In 1 To 10  ---------------------------------
+
+START
+	BEGIN
+		SET N TO 5
+		SET OUTSIDEMODE TO FALSE
+		IF OUTSIDEMODE EQUALS TRUE THEN
+			IF N LESS THAN OR EQUAL TO 1 OR N GREATER THAN OR EQUAL TO 10 THEN
+				DISPLAY TRUE 
+			ELSE
+				DISPLAY FALSE
+			END IF
+		ELSE
+			IF N GREATER THAN OR EQUAL TO 1 OR N LESS THAN OR EQUAL TO 10 THEN
+				DISPLAY TRUE
+			ELSE
+				DISPLAY FALSE
+			END IF
+		END IF
+	END
+STOP
+
+Q83 — Special Eleven ---------------------------------------
+
+START
+	BEGIN
+		SET N TO 22
+		IF N MOD 11 EQUALS 0 OR N-1 MOD 11 EQUALS 0
+		THEN
+			DISPLAY TRUE
+		ELSE
+			DISPLAU FALSE
+		END IF
+	END
+STOP
+
+
+Q84 — More 20 ---------------------------------------------------
+
+
+START
+ 	BEGIN
+ 		SET N TO 20
+ 		IF N-1 MOD 20 EQUALS 0 OR N-2 MOD 20 EQUALS 0
+ 		THEN
+ 			DISPLAY TRUE
+ 		ELSE
+ 			DISPLAU FALSE
+ 		END IF
+ 	END
+STOP
+
+
+Q85 — Old 35 -------------------------------------------------------
+
+
+START
+ 	BEGIN
+ 		SET N TO 10
+ 		IF N MOD 5 EQUALS 0  		
+		THEN
+ 			DISPLAY TRUE
+ 		ELSE
+ 			IF N MODE 3 EQUAS 0 
+			THEN
+				DISPLAY TRUE
+			ELSE
+				DISPLAY FALSE
+			END IF
+ 		END IF
+ 	END
+STOP
+
+
+Q86 — Less 20 -------------------------------------------------
+
+START
+ 	BEGIN
+ 		SET N TO 20
+ 		IF N+1 MOD 20 EQUALS 0 OR N+2 MOD 20 EQUALS 0
+ 		THEN
+ 			DISPLAY TRUE
+ 		ELSE
+ 			DISPLAU FALSE
+ 		END IF
+ 	END
+STOP
+
+
+Q87 — Near Ten  ------------------------------
+
+START
+	BEGIN
+    		SET N TO 3
+    		IF N MOD 10 LESS THAN OR EQUAL TO 2 OR N MOD 10 GREATER THAN OR EQUAL TO 8 THEN
+        		DISPLAY TRUE
+    		ELSE
+        		DISPLAY FALSE
+    		END IF
+	END
+STOP
+
+88 — Teen Sum  -------------------------------
+
+
+START
+ 	BEGIN
+ 		SET A TO 3
+ 		SET B TO 4
+ 		IF A GREATER THAN OR EQUAL TO 13 AND A LESS THAN OR EQUAL TO 19 THEN
+ 			DISPLAY 19
+ 		ELSE IF B GREATER THAN OR EQUAL TO 13 AND B LESS THAN OR EQUAL TO 19 THEN
+ 			DISPLAY 19
+		ELSE 
+			DISPLAY A + B
+ 		END IF
+ 	END
+STOP
+
+Q89 — Answer Cell --------------------------------------------------------
+
+START
+ 	BEGIN
+ 		SET MORNING TO FALSE
+ 		SET MOM TO FALSE
+		SET ASLEEP TO FALSE
+ 		IF ASLEEP EQUALS TRUE THEN
+ 			DISPLAY FALSE
+ 		ELSE
+ 			IF MORNING EQUALS TRUE AND MOM EQUALS TRUE THEN
+ 				DISPLAY TRUE
+			ELSE
+				DISPLAY FALSE
+ 		END IF
+ 	END
+STOP
+
+
+Q90 — Tea Party -----------------------------
+
+START
+ 	BEGIN
+ 		SET TEA TO 6
+ 		SET CANDY TO 8
+ 		IF TEA*2 EQUALS CANDY OR CANDY *2 EQUALS TEA THEN
+ 			DISPLAY 2
+ 		ELSE IF TEA LESS THAN 5 OR CANDY LESS THAN 5 THEN
+			DISPLAY 0
+		ELSE 
+			DISPLAY 1	 		
+		END IF
+ 	END
+STOP
+
+Q91 — Fizz String  ---------------------------------------------
+
+START
+	BEGIN
+		SET STR TO "fig"
+		SET RESULT TO ""
+		IF CHARACTER AT FIRST INDEX OF STR EQUALS "f" THEN
+			SET RESULT TO RESULT + "Fizz"
+		ELSE IF CHARACTER AT LAST INDEX OF STR EQUALS "B" THEN
+			SET RESULT TO RESULT + "Buzz"
+		ELSE
+			SET RESULT TO STR
+		END IF 
+		DISPLAY RESULT
+	END
+STOP
+
+
+Q92 — Fizz String 2 --------------------------------------
+
+START
+	BEGIN
+		SET N TO 1
+		SET RESULT TO ""
+		IF N MOD 3 EQULS 0 THEN
+			SET RESULT TO RESULT + "Fizz"
+		END IF
+		IF N MOD 5 EQULS 0  THEN
+			SET RESULT TO RESULT + "Buzz"
+		END IF 
+		IF N MOD 3 NOT EQUALS 0 AND N MOD 5 NOT EQUALS 0 THEN
+			SET RESULT TO N
+		END IF
+		DISPLAY RESULT + "!"
+	END
+STOP
+
+
+Q93 — Two As One  ------------------------------------------
+
+
+
+START
+	BEGIN
+		SET A TO 1
+		SET B TO 2
+		SET C TO 3 
+		IF A + B EQUALS C OR A + C EQUALS OR B + C EQUALS A THEN
+			DISPLAY TRUE
+  		ELSE 
+			DISPLAY FALSE
+		END IF
+	END 
+STOP
+
+
+
+Q94 — In Order  ----------------------------------------
+
+
+START
+	BEGIN
+		SET A TO 1
+		SET B TO 2
+		SET C TO 4 
+		SET BOK TO FALSE
+		IF BOK EQUALS TRUE THEN
+			IF B GREATER THAN A AND C GREATER THAN B THEN
+				DISPLAY TRUE
+			ELSE
+				DISPLAY FALSE
+  		ELSE 
+			IF C GREATER THAN B THEN
+				DISPLAY TRUE
+			ELSE
+				DISPLAY FALSE
+		END IF
+	END 
+STOP
+
+Q95 — In Order Equal  ---------------------------------------------------
+
+START
+	BEGIN
+    		SET A TO input
+    		SET B TO input
+    		SET C TO input
+    		SET EQUALOK TO FALSE
+    		IF EQUALOK EQUALS TRUE
+    		THEN
+        		IF A LESS THAN OR EQUAL TO B AND B LESS THAN OR EQUAL TO C
+        		THEN
+            			DISPLAY TRUE
+        		ELSE
+            			DISPLAY FALSE
+        		END IF
+    		ELSE
+        		IF A LESS THAN  B AND B LESS THAN C
+        		THEN
+            			DISPLAY TRUE
+        		ELSE
+            			DISPLAY FALSE
+        		END IF
+    		END IF
+	END
+STOP
+
+Q96 — Last Digit (Three Values) ------------------------------------------------
+START
+	BEGIN
+		SET A TO 23
+		SET B TO 19
+		SET C TO 13 
+		IF A MODE 10 EQUALS B MODE 10 OR A MODE 10 EQUALS C MODE 10 OR B MODE 10 EQUALS C MOD 10
+		THEN
+			DISPLAY TRUE
+		ELSE
+			DISPLAY FALSE
+		END IF
+	END 
+STOP
+
+Q97 — Less By 10 -----------------------------------------------------------------------
+
+START
+ 	BEGIN
+ 		SET A TO 1
+ 		SET B TO 7
+ 		SET C TO 11
+ 		IF ABSOLUTE(A - B) GREATER THAN OR EQUAL TO 10) OR ABSOLUTE(A - C) GREATER THAN OR EQUAL TO 10) OR ABSOLUTE (B - C) GREATER THAN OR EQUAL TO 10
+ 		THEN
+ 			DISPLAY TRUE
+ 		ELSE
+ 			DISPLAY FALSE
+ 		END IF
+ 	END
+STOP
+
+
+
+Q98 — Without Doubles  -------------------------------
+
+START
+ 	BEGIN
+ 		SET A TO 2
+ 		SET B TO 3
+ 		SET NODOUB TO FALSE
+ 		IF NODOUB EQUALS TRUE AND A EQUALS B THEN
+			IF A EQUAL 6 THEN
+				SET A TO 1
+			ELSE
+				SET A TO A+1
+
+ 			END IF
+  	
+ 		END IF
+ 		DISPLAY A +B
+
+ 	END
+STOP
+
+Q99 — Max Mod 5  ------------------------------------
+
+START
+ 	BEGIN
+ 		SET A TO 2
+ 		SET B TO 3
+ 		IF A MODE 5 EQUALS B MODE 5
+		THEN
+			IF A GREATER THAN OR EQUAL TO B THEN
+				DISPLAY A
+			ELSE
+				DISPLAY B
+ 		END IF
+		IF A GREATER THAN OR EQUAL TO B THEN
+			DISPLAY A
+		ELSE
+			DISPLAY B
+		END IF
+		IF A EQUALS B THEN
+			DISPLAY 0
+		END IF
+
+ 	END
+STOP
+
+
+Q100 — Red Ticket -------------------------------------
+
+START
+	BEGIN
+		SET A TO 2
+		SET B TO 2
+		SET C TO 2
+    		IF A EQUALS 2 AND B EQUALS 2 AND C EQUALS 2 THEN
+        		DISPLAY 10
+    		ELSE IF A EQUALS B AND B EQUALS C THEN
+       			 DISPLAY 5
+
+    		ELSE IF A NOT EQUALS B AND A NOT EQUALS C THEN
+        		DISPLAY 1
+    		ELSE
+        		DISPLAY 0
+		END IF
+
+	END
+STOP
+
+
+Q101 — Green Ticket  -------------------------------------------------
+
+START
+	BEGIN
+		SET A TO 1
+		SET B TO 2
+		SET C TO 3
+    		IF A EQUALS B AND B EQUALS C THEN
+        		DISPLAY 20
+
+    		ELSE IF A EQUALS B OR A EQUALS C OR B EQUALS C THEN
+        		DISPLAY 10
+
+    		ELSE
+        		DISPLAY 0
+		END IF
+	END
+STOP
+
+
+Q102 — Blue Ticket ----------------------------------------
+
+
+
+START
+	BEGIN
+		SET A TO 9
+		SET B TO 1
+		SET C TO 0
+    		IF A+B EQUALS 10 OR B+C EQUALS 10 OR A+C EQUALS 10 THEN
+        		DISPLAY 10
+    		ELSE IF A+B EQUALS B +C+10 OR A+B EQUALS A+C+10 THEN
+        		DISPLAY 5
+
+    		ELSE
+        		DISPLAY 0
+		END IF
+	END
+STOP
+
+
+
+Q103 — Share Digit ---------------------------------------
+
+START
+	BEGIN
+		SET A TO 12
+		SET B TO 23
+    		IF A /10 EQUALS B / 10 OR A /10 EQUALS B % 10 THEN
+        		DISPLAY TRUE
+    		ELSE IF A % 10 EQUALS B / 10 OR A % 10 EQUALS B % 10 THEN
+        		DISPLAY TRUE
+    		ELSE
+        		DISPLAY FALSE
+		END IF
+	END
+STOP
+
+Q104 — Sum Limit ----------------------------------------------
+
+START
+   	BEGIN
+       		SET A TO 2
+        	SET B TO 3
+        	SET SUM TO A + B
+
+        	SET I TO A
+        	SET COUNTI TO 0
+        	REPEATE WHILE I GREATER THAN 0
+            		SET I TO I / 10
+            		SET COUNTI TO COUNTI + 1
+        	END REPEATE
+
+		SET J TO SUM
+        	SET COUNTJ TO 0
+        	REPEATE WHILE J GREATER THAN 0
+            		SET J TO J / 10
+            		SET COUNTJ TO COUNTJ + 1
+        	END REPEATE
+
+        	IF COUNTJ EQUALS COUNTI THEN
+            		DISPLAY SUM
+        	ELSE
+            		DISPLAY A
+        	END IF
+    END
+STOP
+

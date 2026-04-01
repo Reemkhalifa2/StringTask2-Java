@@ -1,0 +1,299 @@
+Task 1 – Animal Sound System -------------------------------
+CLASS Animal
+    ATTRIBUTES
+    name : TEXT
+    age : NUMBER
+
+    CONSTRUCTOR(n :TEXT , a : NUMBER)
+        SET name TO n 
+        SET age TO a
+    END CONSTRUCTOR
+
+    METHODS
+    PUBLIC makeSound()
+        DISPLAY name
+    END METHOD
+END CLASS
+CLASS Dog INHERITS Animal
+    METHODS
+    OVERRIDE makeSound()
+        DISPLAY name + "barks"
+    END METHOD
+END CLASS
+CLASS Cat INHERITS Animal
+    METHODS
+    OVERRIDE makeSound()
+        DISPLAY name + "meows"
+    END METHOD
+END CLASS
+CLASS Cow INHERITS Animal
+    METHODS
+    OVERRIDE makeSound()
+        DISPLAY name + "moos"
+    END METHOD
+END CLASS
+START 
+    BEGIN
+        CREATE OBJECT pet1 OF DOG("Buddy", 3)
+        CREATE OBJECT pet2 OF Cat("Luna", 2)
+        CREATE OBJECT pet3 OF DOG("Bella", 4)
+        SET animals TO LIST[]
+        ADD pet1 TO animals
+        ADD pet2 TO animals
+        ADD pet3  TO animals
+        REPEAT FROM I=1 TO SIZE OF animals
+            animals[I].makeSound()
+        END REPEAT
+    END
+STOP
+Task 2 – Employee Payment System  -------------------------------
+CLASS Employee
+    ATTRIBUTES
+    name : TEXT
+    baseSalary : NUMBER
+    CONSTRUCTOR(n : TEXT , salary : NUMBER)
+    SET NAME TO n 
+    SET baseSalary TO salary
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC GET calculatePay()
+        RETURN baseSalary
+    END METHOD
+END CLASS
+
+CLASS FullTimeEmployee INHERITS Employee
+    ATTRIBUTES
+    bonus : NUMBER
+    CONSTRUCTOR(b : NUMBER)
+        SET bonus TO b
+    END CONSTRUCTOR
+
+    METHODS
+    OVERRIDE calculatePay()
+    RETURN baseSalary + bonus
+    END  METHOD
+END  CLASS
+CLASS PartTimeEmployee INHERITS Employee
+    ATTRIBUTES
+    hourlyRate : NUMBER
+    hoursWorked : NUMBER 
+    CONSTRUCTOR(hourRate : NUMBER , workHours : NUMBER)
+        SET hourlyRate TO hourRate
+        SET hoursWorked TO workHours
+    END CONSTRUCTOR
+
+    METHODS
+    OVERRIDE calculatePay()
+    RETURN  hourlyRate * hoursWorked
+    END  METHOD
+END CLASS
+START
+    BEGIN
+        CREATE OBJECT emp1 OF FullTimeEmployee("Ali", 1000, 200) 
+        CREATE OBJECT emp2 OF PartTimeEmployee("Sara", 0, 20, 40) 
+        CREATE OBJECT emp3 OF PartTimeEmployee("Omar", 0, 15, 30) 
+        SET employees TO LIST
+        ADD emp1 TO employees
+        ADD emp2 TO employees
+        ADD emp3 TO employees
+        REPEAT FROM I=1 TO SIZE OF employees
+            DISPLAY "Employee Name" + employees[I].name
+            DISPLAY "Total Pay: " + employees[I].calculatePay()
+        END REPEAT
+    END
+STOP
+Task 3 – Shape Area Calculator ----------------------------------------
+CLASS Shape
+    METHODS
+    PUBLIC calculateArea()
+        DISPLAY "Area cannot be calculated "
+    END METHOD
+END CLASS
+CLASS Circle INHERITS Shape
+    ATTRIBUTES 
+    radius : NUMBER
+    CONSTRUCTOR(r : NUMBER)
+        SET radius TO r
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE calculateArea()
+        DISPLAY 3.14 * radius * radius 
+    END METHOD
+END CLASS
+
+CLASS Rectangle INHERITS Shape
+    ATTRIBUTES 
+    length : NUMBER
+    width : NUMBER
+
+    CONSTRUCTOR(l : NUMBER, w : NUMBER)
+        SET length TO r
+        SET width TO w
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE calculateArea()
+        DISPLAY length * width 
+    END METHOD
+END CLASS
+
+CLASS Triangle INHERITS Shape
+    ATTRIBUTES 
+    base : NUMBER
+    height : NUMBER
+
+    CONSTRUCTOR(b : NUMBER, h : NUMBER)
+        SET base TO b
+        SET height TO h
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE calculateArea()
+        DISPLAY 0.5 * base * height 
+    END METHOD
+END CLASS
+
+START
+    BEGIN
+        CREATE OBJECT circle1 OF Circle(5) 
+        CREATE OBJECT rect1 OF Rectangle(4,6) 
+        CREATE OBJECT tri1 OF Triangle(10,4)
+        SET shapes TO LIST
+        ADD circle1 TO shapes
+        ADD rect1 TO shapes
+        ADD tri1 TO shapes
+        REPEAT FROM I=1 TO SIZE OF shapes
+            DISPLAY "Shape area: " + shapes[I].calculateArea()
+        END REPEAT
+    END
+STOP
+
+
+Task 4 – Vehicle Rental System --------------------
+CLASS Vehicle
+    ATTRIBUTES
+    brand : TEXT 
+    pricePerDay : NUMBER 
+    CONSTRUCTOR(b : TEXT , price : NUMBER)
+        SET brand TO b
+        SET pricePerDay TO price
+    END CONSTRUCTOR
+    METHODS
+    PUBLIC calculateRent(days)
+        DISPLAY "rent =" +  pricePerDay * days
+    END METHOD
+END CLASS
+
+CLASS Car INHERITS Vehicle
+    METHODS 
+    PUBLIC calculateRent(days)
+    END METHOD
+END CLASS
+CLASS Bike INHERITS Vehicle
+    METHODS
+    OVERRIDE calculateRent(days)
+        DISPLAY "rent =" + (pricePerDay * days) - 5 
+    END METHOD
+END CLASS
+CLASS Truck INHERITS Vehicle
+    METHODS
+    OVERRIDE calculateRent(days)
+        DISPLAY "rent =" + (pricePerDay * days) + 20 
+    END METHOD
+END CLASS
+START
+    BEGIN
+        CREATE OBJECT car1 OF Car("Toyota", 50) 
+        CREATE OBJECT bike1 OF Bike("Yamaha", 30) 
+        CREATE OBJECT truck1 OF Truck("Volvo", 80) 
+        SET vehicles TO LIST
+        ADD CAR1 TO vehicles
+        ADD bike1 TO vehicles
+        ADD truck1 TO vehicles
+        REPEAT FROM  I=1 TO SIZE OF vehicles
+            vehicles[I].calculateRent(3)
+        END REPEAT
+    END
+STOP
+
+Task 5 – University Member System  ----------------
+
+CLASS Person
+    ATTRIBUTES
+    name : TEXT 
+    id : NUMBER 
+    CONSTRUCTOR(n : TEXT , i : NUMBER)
+        SET name TO n
+        SET id TO i
+    END  CONSTRUCTOR
+    METHODS
+    PUBLIC displayInfo()
+        DISPLAY "Name" + name 
+        DISPLAY "ID: " + id
+    END METHOD
+END CLASS
+
+CLASS Student INHERITS Person
+    ATTRIBUTES 
+    major :TEXT
+    CONSTRUCTOR(m : TEXT)
+    SET major TO m
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE displayInfo()
+        DISPLAY "Name" + name 
+        DISPLAY "ID: " + id
+        DISPLAY "Major: " + major
+    END METHOD
+END CLASS
+CLASS Teacher INHERITS Person
+    ATTRIBUTES 
+    subject :TEXT
+    CONSTRUCTOR(S : TEXT)
+    SET subject TO S
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE displayInfo()
+        DISPLAY "Name" + name 
+        DISPLAY "ID: " + id
+        DISPLAY "subject: " + subject
+    END METHOD
+END CLASS
+CLASS Administrator INHERITS Person
+    ATTRIBUTES 
+    department :TEXT
+    CONSTRUCTOR(D : TEXT)
+    SET department TO D
+    END CONSTRUCTOR
+    METHODS
+    OVERRIDE displayInfo()
+        DISPLAY "Name" + name 
+        DISPLAY "ID: " + id
+        DISPLAY "department: " + department
+    END METHOD
+END CLASS
+
+START
+    BEGIN
+        CREATE OBJECT student1 OF Student("Ali",101,"Computer Science") 
+        CREATE OBJECT teacher1 OF Teacher("Sara",201,"Mathematics") 
+        CREATE OBJECT admin1 OF Administrator("Omar",301,"Admissions") 
+        SET people TO LIST[]
+        ADD student1 TO people
+        ADD teacher1 TO people
+        ADD admin1 TO people
+        REPEAT FROM I=1 TO SIZE OF people
+            people[I].displayInfo()
+        END REPEAT
+    END
+STOP
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,501 @@
+---------------   TASK 1 — Age Category Checker---------------
+
+CLASS PERSON
+	
+	ATTRIBUTES
+	name : TEXT
+	age : NUMBER
+	METHODS
+	CHECK_CATEGORY() 
+		IF AGE LESS THAN 13 THEN
+			DISPLAY name + "- Child"
+		ELSE IF AGE LESS THAN OR EQUAL TO 19 THEN
+			DISPLAY name + "- Teenager"
+		ELSE
+			DISPLAY name + "- Adult"
+		END IF
+	END METHOD
+END CLASS
+
+
+START
+	BEGIN
+		CREATE OBJECT newPerson OF CLASS PERSON
+		SET newPerson.name TO "Sara"
+		SET newPerson.age TO 15
+		SET newPerson.CHECK_CATEGORY()
+	END
+STOP
+
+
+
+------------ TASK 2 — Square Area Calculator -------------------
+
+
+CLASS SQUARE 
+	ATTRIBUTES
+	side : NUMBER
+	METHODS
+	CALCULATE_AREA()
+		DISPLAY "Area :" + side * side
+	END METHOD
+END CLASS
+
+
+START
+	BEGIN
+		CREATE OBJECT shape OF SQUARE
+		SET shape.side TO 6
+		shape.CALCULATE_AREA()
+	END 
+STOP
+
+
+------------ TASK 3 — Wallet System  -----------------
+
+
+CLASS WALLET
+	ATTRIBUTES
+	owner : TEXT
+	money : NUMBER
+	METHODS
+	ADD_MONEY(amount)
+		SET money TO money + amount
+		DISPLAY "Money:" + money
+	END METHOD
+	SPEND_MONEY(amount)
+	IF amount GREATER THAN money THEN
+		DISPLAY  "Not enough money" 
+	ELSE
+		SET money TO money - amount
+	END IF
+	DISPLAY "Money:" + money
+	END METHOD
+END CLASS
+
+START
+	BEGIN 
+		CREATE OBJECT person1 OF WALLET
+		SET person1.owner to "REEM"
+		SET person1.money to 100
+		person1.ADD_MONEY(50)
+		person1.SPEND_MONEY(30)
+		person1.SPEND_MONEY(40)
+	END 
+STOP
+
+---------------  TASK 4 — Light Switch --------------------
+CLASS Light
+	ATTRIBUTES
+	status : TEXT
+	METHODS
+	TURN_ON()
+		SET status TO "ON"
+		DISPLAY "Light is " + status
+	END METHOD
+	TURN_OFF()
+		SET status TO "OFF"
+		DISPLAY "Light is " + status
+	END METHOD
+END CLASS
+
+
+START 
+	BEGIN
+		CREATE OBJECT lightSwitch OF Light
+		lightSwitch.TURN_ON()
+		lightSwitch.TURN_OFF()
+	END
+STOP
+
+
+
+TASK 5 — Number Counter -------------------------
+
+CLASS Counter
+	ATTRIBUTES
+	number : NUMBER
+	METHODS
+	INCREASE()
+		SET number TO number + 1
+		DISPLAY number
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT count OF Counter
+		REPEAT FROM I=0 TO 4
+			SET count.number TO  I
+			count.INCREASE()
+		END REPEAT
+	END
+STOP
+
+
+TASK 6 — Shopping Item Manager ------------------------------
+
+CLASS Item
+	ATTRIBUTES
+	name : TEXT
+	price : NUMBER
+	METHODS
+	SHOW_INFO()
+		DISPLAY "Item: " +name + "| Price:" + price
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT item1 OF Item
+		SET item1.name TO "Pen"
+		SET item1.price TO 2
+
+		CREATE OBJECT item2 OF Item
+		SET item2.name TO "Book"
+		SET item2.price TO 10
+
+		CREATE OBJECT item3 OF Item
+		SET item3.name TO "Bag"
+		SET item3.price TO 25
+		
+		item1.SHOW_INFO()
+		item2.SHOW_INFO()
+		item3.SHOW_INFO()
+	END
+STOP
+
+TASK 7 — Password Length Checker  -----------------------------------
+CLASS Account
+	ATTRIBUTES
+	username : TEXT
+	password : TEXT
+	METHODS
+	CHECK_PASSWORD()
+	IF LENGTH OF password LESS THAN 6 THEN
+		DISPLAY "Weak password"
+	ELSE
+		DISPLAY "Strong password"
+	END IF
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT newAcc OF Account
+		SET newAcc.username TO "ABC"
+		SET newAcc.password TO "AB1234"
+		newAcc.CHECK_PASSWORD()
+	END 
+STOP
+
+TASK 8 — Score List System  --------------------------
+
+CLASS ScoreBoard
+	ATTRIBUTES
+	scores:LIST
+	METHODS
+	ADD_SCORE(score)
+		ADD score TO LIST scores
+	END METHOD
+	SHOW_SCORES()
+		DISPLAY "Scores: "
+		REPEAT FROM I =1 TO SIZE OF scores
+			DISPLAY scores[I]
+		END REPEAT
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT newScore OF ScoreBoard
+		newScore.ADD_SCORE(10)
+		newScore.ADD_SCORE(20)
+		newScore.ADD_SCORE(15)
+		newScore.SHOW_SCORES()
+	END
+STOP
+TASK 9 — Even Number Checker  ------------------------
+
+CLASS NumberCheck
+	ATTRIBUTES
+	number:NUMBER
+	METHODS
+	CHECK_EVEN() 
+		IF number MOD 2 EQUALS 0 THEN    
+			DISPLAY "Even number" 
+		ELSE
+			DISPLAY "Odd number" 
+		END IF
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT N1 OF NumberCheck
+		SET N1.number TO 7
+		N1.CHECK_EVEN()
+	END
+STOP
+
+
+
+TASK 10 — Simple Alarm ---------------------
+
+CLASS Alarm
+	ATTRIBUTES 
+	time : NUMBER
+	METHODS
+	RING()
+		IF time EQUALS 7 THEN
+			DISPLAY "Wake up!" 
+		END IF
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT morningAlarm OF Alarm
+		SET morningAlarm.time TO 7
+		morningAlarm.RING()
+	END
+STOP
+
+
+--------- TASK 11 — Car Fuel Tracker ------------
+
+CLASS Vehicle
+	ATTRIBUTES
+	fuel : NUMBER
+	METHODS
+	DRIVE(amount)
+		IF fuel LESS THAN amount THEN
+			DISPLAY "Not enough fuel"
+		ELSE
+			SET fuel TO fuel - amount
+			DISPLAY "Fuel left:" + fuel
+		END IF
+	END METHOD
+END CLASS
+
+
+START
+	BEGIN
+		CREATE OBJECT car OF Vehicle
+		SET car.fuel TO 50
+		car.DRIVE(20)
+		car.DRIVE(40)
+	END
+STOP
+
+
+TASK 12 — Student List ---------------------------
+
+CLASS School
+	ATTRIBUTES
+	students : LIST
+	METHODS
+	ADD_STUDENT(name) 
+		ADD name TO LIST students 
+	END METHOD
+	SHOW_STUDENTS()
+		REPEAT FROM I=1 TO SIZE OF students
+			DISPLAY students[I]
+		END REPEAT
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT class1 OF School
+		class1.ADD_STUDENT("Ali")
+		class1.ADD_STUDENT("Sara") 
+		class1.ADD_STUDENT("Ahmed") 
+		class1.SHOW_STUDENTS()
+	END
+STOP
+ 
+TASK 13 — Temperature Warning  --------------------------
+
+CLASS Weather
+	ATTRIBUTES
+	temperature : NUMBER 
+	METHODS
+	CHECK_TEMP()
+	IF temperature GREATER THAN 35 THEN
+		DISPLAY "Hot weather" 
+	ELSE
+		DISPLAY "Normal weather"
+	END IF
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT today OF Weather
+		SET today.temperature TO 45
+		today.CHECK_TEMP()
+	END 
+STOP
+
+
+TASK 14 — Bank Interest  -----------------------------------
+CLASS Account
+	ATTRIBUTES
+	balance : NUMBER
+	METHODS
+	ADD_INTEREST() 
+	SET balance TO balance + balance*0.1
+	DISPLAY "New balance: " + balance
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT acc OF Account
+		SET acc.balance TO 100
+		acc.ADD_INTEREST() 
+	END
+STOP
+
+TASK 15 — Classroom Counter -------------------------------
+
+CLASS Classroom
+	ATTRIBUTES
+	students : NUMBER
+	METHODS
+	ADD_STUDENT()
+		SET students TO students +1
+		DISPLAY "Students: " + students
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT class1 OF Classroom
+		SET class1.students TO 0
+		class1.ADD_STUDENT()
+		class1.ADD_STUDENT()
+		class1.ADD_STUDENT()
+	END
+STOP
+
+
+TASK 16 — Music Playlist  -----------------------------
+
+CLASS Playlist
+	ATTRIBUTES 
+	songs : LIST
+	METHODS
+	ADD_SONG(song)
+		ADD song TO LIST songs
+	END METHOD
+	SHOW_SONGS()
+	REPEAT FROM I=1 TO SIZE OF songs
+		DISPLAY songs[I]
+	END REPEAT
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT album OF Playlist
+		album.ADD_SONG("Song A")
+		album.ADD_SONG("Song B")
+		album.ADD_SONG("Song C")
+		album.SHOW_SONGS()
+	END 
+STOP
+
+
+TASK 17 — Exam Pass Counter ----------------------------------
+
+CLASS Exam
+	ATTRIBUTES
+	marks : LIST 
+	METHODS
+	COUNT_PASS()
+	SET PASS TO 0 
+	REPEAT FROM I=1 TO SIZE OF marks
+		IF marks[I] GREATER THAN OR EQUAL TO 50 THEN
+			SET PASS TO PASS + 1
+		END IF
+	END REPEAT
+	DISPLAY "Passed students: "+ PASS
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT midExam OF Exam
+		SET midExam.marks TO LIST[30,60,80,45]
+		midExam.COUNT_PASS()
+	END 
+STOP
+
+TASK 18 — Door Lock System ----------------------------------------
+CLASS Door
+	ATTRIBUTES
+        locked : BOOLEAN
+    	METHODS
+        LOCK()
+            SET locked TO TRUE
+            DISPLAY "Door locked"
+        END METHOD
+        UNLOCK()
+            SET locked TO FALSE
+            DISPLAY "Door unlocked"
+        END METHOD
+END CLASS
+START
+	BEGIN
+        	CREATE OBJECT door1 OF Door
+        	door1.LOCK()
+        	door1.UNLOCK()
+    	END
+STOP
+
+TASK 19 — Product Discount ---------------------------------------------
+
+CLASS Product
+	ATTRIBUTES
+	price : NUMBER
+	METHODS
+	APPLY_DISCOUNT()  
+	SET price TO price - price * 0.20
+	DISPLAY "Discounted price: " + price
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT sales OF Product
+		SET sales.price TO 100
+		sales.APPLY_DISCOUNT() 
+	END
+STOP
+ 
+TASK 20 — Team Player Manage --------------------------------------
+CLASS Team
+	ATTRIBUTES
+	players : LIST
+	METHODS 
+	ADD_PLAYER(name) 
+		ADD name TO LIST players
+	END METHOD
+	SHOW_PLAYERS()
+	REPEAT FROM I=1 TO SIZE OF players
+		DISPLAY players[I]
+	END REPEAT
+	END METHOD
+END CLASS
+
+START
+	BEGIN
+		CREATE OBJECT team1 OF Team
+		team1.ADD_PLAYER("Messi")
+		team1.ADD_PLAYER("Ronaldo")
+		team1.ADD_PLAYER("Neymar") 
+		team1.SHOW_PLAYERS()
+	END
+STOP

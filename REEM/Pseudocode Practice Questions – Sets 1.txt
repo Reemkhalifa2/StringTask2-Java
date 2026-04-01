@@ -1,0 +1,301 @@
+
+-------------------- Q114 — No Duplicates Check ---------------------------------
+
+
+START
+	BEGIN
+		SET FRUITS TO LIST["apple", "banana", "orange"]
+		CREATE SET noDuplicates
+		REPEAT FROM I = 1 TO SIZE OF FRUITS
+      			ADD FRUITS[I] TO SET noDuplicates
+   		END REPEAT
+		IF SIZE OF FRUITS EQUALS SET SIZE OF noDuplicates
+		THEN
+			DISPLAY TRUE
+		ELSE
+			DISPLAY FALSE
+		END IF
+
+	END
+STOP
+
+
+--------------------- Q115 — Shared Members --------------------------------
+
+START
+	BEGIN
+		SET A TO LIST["Ali", "Sara"]
+		SET B TO LIST["Tom", "Sara"]
+
+		CREATE SET SETA
+		CREATE SET SETB
+
+		REPEAT FROM I = 1 TO SIZE OF A
+			ADD A[I] TO SET SETA
+		END REPEAT
+
+		REPEAT FROM I = 1 TO SIZE OF B
+			ADD B[I] TO SET SETB
+		END REPEAT
+
+		CREATE SET sharedMembers
+		SET sharedMembers TO INTERSECT SETS SETA AND SETB
+
+		IF SET SIZE OF sharedMembers GREATER THAN 0 THEN
+			DISPLAY TRUE
+		ELSE
+			DISPLAY FALSE
+		END IF
+	END
+STOP
+
+-------------- Q116 — Unique Total --------------------------
+
+START
+	BEGIN
+		SET A TO LIST[1, 2, 3]
+		SET B TO LIST[3, 4, 5]
+		CREATE SET SETA
+		CREATE SET SETB
+
+		REPEAT FROM I = 1 TO SIZE OF A
+      			ADD A[I] TO SET SETA
+   		END REPEAT
+		REPEAT FROM I = 1 TO SIZE OF B
+      			ADD B[I] TO SET SETB
+   		END REPEAT
+
+		CREATE SET uniqueTotal 
+		SET uniqueTotal TO MERGE SETS SETA AND SETB
+		DISPLAY SET SIZE OF uniqueTotal
+	END
+STOP
+
+----------------------- Q117 — Unique Only In A --------------------------
+
+
+START
+	BEGIN
+		SET A TO LIST["a", "b", "c"]
+		SET B TO LIST["b", "c", "d"]
+		CREATE SET SETA
+		CREATE SET SETB
+
+		REPEAT FROM I = 1 TO SIZE OF A
+      			ADD A[I] TO SET SETA
+   		END REPEAT
+		REPEAT FROM I = 1 TO SIZE OF B
+      			ADD B[I] TO SET SETB
+   		END REPEAT
+
+		CREATE SET uniqueOnlyInA 
+		SET uniqueOnlyInA TO DIFFERENCE OF SETS SETA AND SETB
+		DISPLAY uniqueOnlyInA
+
+	END
+STOP
+
+
+---------------------- Q118 — Remove Banned Words -----------------------------------
+
+
+
+START
+	BEGIN
+		SET words TO LIST["hi", "bad", "hello", "evil"]
+		SET removeBanned TO LIST[]
+
+		CREATE SET banned_words
+		ADD "bad" TO SET banned_words
+		ADD "evil" TO SET banned_words
+
+		REPEAT FROM I = 1 TO SIZE OF words
+			IF NOT SET CONTAINS banned_words words[I] THEN
+				ADD words[I] TO LIST removeBanned
+			END IF
+		END REPEAT
+
+		DISPLAY removeBanned
+	END
+STOPP
+
+
+--------------- Q119 — Both Have It  ------------------------
+
+
+START
+	BEGIN
+		CREATE SET SETA
+		ADD "a" TO SET SETA
+		ADD "b" TO SET SETA
+
+		CREATE SET SETB
+		ADD "a" TO SET SETB
+		ADD "b" TO SET SETB
+		ADD "c" TO SET SETB
+
+		CREATE SET bothHaveIt
+		SET bothHaveIt TO INTERSECT SETS SETA AND SETB
+
+		IF SET SIZE OF bothHaveIt EQUALS SET SIZE OF SETA THEN
+			DISPLAY TRUE
+		ELSE
+			DISPLAY FALSE
+		END IF
+	END
+STOP
+
+
+
+---------------------- Q120 — Count Unique Chars ------------------
+
+START
+	BEGIN
+
+		SET STR TO "hello"
+
+		CREATE SET countUniqueChars
+		REPEAT FROM I = 1 TO LENGTH OF STR
+      			ADD CHARACTER AT INDEX I TO SET countUniqueChars
+   		END REPEAT
+		DISPLAY SET SIZE OF countUniqueChars
+	END
+STOP
+
+
+-------- Q121 — Common Courses ------------------
+
+
+
+START
+	BEGIN
+		SET COURSE1 TO LIST["Math", "English", "Science"]
+		SET COURSE2 TO LIST["Math", "Art", "Science"]
+		SET COURSE3 TO LIST["Math", "Science", "History"]
+
+		CREATE SET SETA
+		CREATE SET SETB
+		CREATE SET SETC
+
+		REPEAT FROM I = 1 TO SIZE OF COURSE1
+			ADD COURSE1[I] TO SET SETA
+		END REPEAT
+
+		REPEAT FROM I = 1 TO SIZE OF COURSE2
+			ADD COURSE2[I] TO SET SETB
+		END REPEAT
+
+		REPEAT FROM I = 1 TO SIZE OF COURSE3
+			ADD COURSE3[I] TO SET SETC
+		END REPEAT
+
+		CREATE SET INTSET
+		SET INTSET TO INTERSECT SETS SETA AND SETB
+
+		CREATE SET commonCourses
+		SET commonCourses TO INTERSECT SETS INTSET AND SETC
+
+		DISPLAY commonCourses
+	END
+STOP
+
+
+
+------------------------- Q122 — Symmetric Difference --------------------
+
+
+START
+	BEGIN
+
+		CREATE SET SETA
+		ADD "a" TO SET SETA
+		ADD "b" TO SET SETA
+		ADD "c" TO SET SETA
+
+		CREATE SET SETB
+		ADD "b" TO SET SETB
+		ADD "c" TO SET SETB
+		ADD "d" TO SET SETB
+
+		SET BOTH_SETS TO INTERSECT SETS SETA AND SETB
+		SET MERGESETS TO MERGE SETS SETA AND SETB
+
+		REPEATE FROM I=1 TO SET SIZE OF BOTH_SETS
+			REMOVE FROM SET MERGESETS BOTH_SETS[I]
+		END REPEATE
+			
+
+		DISPLAY MERGESETS
+
+	END
+STOP
+
+
+
+
+----------------------- Q123 — First Repeated Value  --------------------
+
+
+
+START
+	BEGIN
+		SET TEXT TO LIST["a", "b", "c", "b", "d"]
+		CREATE SET firstRepeated
+		REPEAT FROM I = 1 TO SIZE OF TEXT
+			IF SET CONTAINS firstRepeated TEXT[I] THEN
+				DISPLAY TEXT[I]
+				
+			ELSE
+				ADD TEXT[I] TO SET firstRepeated
+			END IF
+		END REPEAT
+
+	END
+STOP
+
+
+
+--------------- Q124 — Unique Voter Check ------------------------
+
+
+START
+	BEGIN
+		CREATE SET voterCheck
+		ADD "ID001" TO SET voterCheck
+		ADD "ID002" TO SET voterCheck
+
+		SET VOTE_ID TO "ID001"
+
+		IF SET CONTAINS voterCheck VOTE_ID THEN
+			DISPLAY "Already Voted"
+		ELSE
+			ADD VOTE_ID SET voterCheck
+			DISPLAY "Vote Accepted"
+		END IF
+	END
+STOP
+
+
+------------------- Q125 — Tag Merger  --------------------------
+
+
+START
+	BEGIN
+		CREATE SET POST1
+		ADD "python" TO SET POST1
+		ADD "code" TO SET POST1
+
+		CREATE SET POST2
+		ADD "code" TO SET POST2
+		ADD "tutorial" TO SET POST2
+
+		CREATE SET Combined
+		SET Combined TO  MERGE SETS POST1 AND POST2
+
+		CREATE SET SHARED
+		SET SHARED TO  INTERSECT SETS POST1 AND POST2
+		DISPLAY Combined +"SHARED:" + SET SIZE OF SHARED
+	END
+STOP
+
+
